@@ -238,7 +238,7 @@
     var feedUrl = ['http://www.google.com/calendar/feeds/', calId, 
         '/', visibility, '/', 'full'].join('');
 
-    console.log(feedUrl);
+    //console.log(feedUrl);
 
     var events = {};  
 
