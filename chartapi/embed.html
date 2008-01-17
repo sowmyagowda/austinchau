@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+ <script>
+    
+
+    function init() {
+      var button = document.getElementById('button');
+
+      button.onclick = function() {
+        var cal = document.getElementById('cal');
+        cal.src = 'http://www.google.com/calendar/embed?src=austin.chau%40gmail.com';
+      }
+    }
+ </script>
+ <body onload='javascript:init();'>
+  <input type=button id=button value='click'>
+  <iframe id=cal src="http://www.google.com/calendar/embed?src=austin.chau%40gmail.com" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
+ </body>
+</html>
