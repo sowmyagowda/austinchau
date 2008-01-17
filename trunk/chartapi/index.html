@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Calendar JS API Test</title>
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+</head>
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="ui.tabs.css" />
+<link rel="stylesheet" type="text/css" href="ui.datepicker.css" />
+
+<script src="http://www.google.com/jsapi?key=ABQIAAAArM7h3NX7hYkBySUFFdiEOhRMq9WPhXB5ITtAW_aCdXafsEhdEhRJTn3hatzGnKcVrGFtLsPfjsv0VA" type="text/javascript"></script>
+<script type="text/javascript" src="http://code.google.com/js/jquery.js"></script>
+<script type="text/javascript" src="ui.tabs.js" ></script>
+<script type="text/javascript" src="ui.datepicker.js" ></script>
+<script type="text/javascript" src="jsapi.js"></script>
+
+<body>
+<img src='dot.gif' style='position:absolute; top: -1000px;'>
+<div id=main align=left>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#tab1"><span>Calendar</span></a></li>
+        <li><a href="#tab2"><span>Movies Feed</span></a></li>
+        <li><a href="#tab3"><span>NBA Feed</span></a></li>
+      </ul>
+
+      <div id="tab1">
+        <div id=token></div>
+        <input type=button id='login' value='login'>
+        <br>
+        <br>
+
+        <div id=runnable>
+
+          <select id="calendarchooser"></select>
+          <select id="visibility">
+            <option value="public">public</option>
+            <option value="private" selected>private</option>
+          </select>
+          <br>
+          <br>
+          When: <input id="startdate" type="text" size="12"> to <input id="enddate" type="text" size="12">
+          <br>
+          <br>
+          <input type="button" id="run" value="run">
+        </div>
+
+        <br><br>
+        <div id=display></div>
+        <div id=chart></div>
+        <br><br>
+      </div>
+
+      <div id="tab2">
+        <input type="button" id="getmovies" value="getMovies">
+        <div id="moviedisplay"></div>
+      </div>
+
+      <div id="tab3">
+        <input type="button" id="getnbagames" value="getNBAGames">
+        <div id="nbagamesdisplay"></div>
+      </div>
+
+
+
+
+</body>
+</html>
