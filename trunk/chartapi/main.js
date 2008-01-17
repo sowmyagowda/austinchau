@@ -132,7 +132,7 @@
             var description = entry.content;
             var link = entry.link;
             
-            var linkRE = /^http:\/\/www\.nba\.com\/games\/([0-9]{4})([0-9]{2})([0-9]{2})\//;
+            var linkRE = /\/([0-9]{4})([0-9]{2})([0-9]{2})\//;
 
             link.match(linkRE);
             
