@@ -106,7 +106,7 @@
 
             $('#moviedisplay').append(movieTitle + '  <font color="green">' + totalSale + '</font><br>');
 
-           getImages(movieTitle);
+           //getImages(movieTitle);
 
 
           }
@@ -153,22 +153,6 @@
             $('#nbagamesdisplay').append(gameDate + '<br>');            
             $('#nbagamesdisplay').append(link + ' --- ' +
                 team1 + ' ' + team1Score + ' ' + team2 + ' ' + team2Score + '<br>');
-
-            $.getJSON(
-              "http://api.flickr.com/services/feeds/photos_public.gne?tags=" + encodeURI(team1 + '+' + team2) + "&tagmode=any&format=json&jsoncallback=?", 
-              function(data){        
-
-                $.each(data.items, function(i,item){
-
-                  var image = $('<img/>');
-                  image.attr('src', item.media.m);
-                  image.click(function() {
-                     alert(team1 + ' ' + team2);
-                  });
-                  $("#nbagamesdisplay").append(image);
-                  $("#nbagamesdisplay").append('<br>');
-                });
-              });
 
           }
         }
