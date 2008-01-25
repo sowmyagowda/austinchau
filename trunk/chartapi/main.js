@@ -1,4 +1,3 @@
-
 (function() {
   var SCOPE_URL = 'http://www.google.com/calendar/feeds/';
   var calendarService = null;
@@ -23,6 +22,7 @@
     initCalendarTab();
     initMoviesTab();
     initNBATab();
+	initTest();
   }
   
   function getImages(tags) {
@@ -44,6 +44,15 @@
         });
       }
     );
+  }
+  
+  function initTest() {
+
+    $('#test').click(function() {
+      $('#testdisplay').html(new Date().getTime());
+    });
+
+    
   }
   
   function initCalendarTab() {
