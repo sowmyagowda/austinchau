@@ -46,15 +46,6 @@
     );
   }
   
-  function initTest() {
-
-    $('#test').click(function() {
-      $('#testdisplay').html(new Date().getTime());
-    });
-
-    
-  }
-  
   function initCalendarTab() {
     calendarService =
       new google.gdata.calendar.CalendarService('Calendar_JS_Guide');
@@ -91,10 +82,38 @@
 
   }
 
+  
+  function initTest() {
+
+    $('#test').click(function() {
+      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau?kind=album&alt=rss&hl=en_US';
+      var feed = new google.feeds.Feed(url);
+      feed.setNumEntries(100);
+      feed.load(function(result) {
+
+        if (!result.error) {
+          
+          $('#testdisplay').empty();
+          for (var i = 0; i < result.feed.entries.length; i++) {
+            var entry = result.feed.entries[i];
+            var title = entry.title;
+            var description = entry.content;
+            var link = entry.link;
+
+            $('#testdisplay').append(title + '<br>');
+
+
+
+          }
+        }
+      });
+    });
+  }
+
   function initMoviesTab() {
 
     $('#getmovies').click(function() {
-      var feed = new google.feeds.Feed("http://rss.ent.yahoo.com/movies/boxoffice.xml");
+      var feed = new google.feeds.Feed('http://rss.ent.yahoo.com/movies/boxoffice.xml');
       feed.setNumEntries(100);
       feed.load(function(result) {
 
@@ -128,7 +147,7 @@
   function initNBATab() {
 
     $('#getnbagames').click(function() {
-      var feed = new google.feeds.Feed("http://www.nba.com/scores/rss.xml");
+      var feed = new google.feeds.Feed('http://www.nba.com/scores/rss.xml');
       feed.setNumEntries(100);
       feed.load(function(result) {
 
