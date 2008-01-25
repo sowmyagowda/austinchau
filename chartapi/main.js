@@ -86,22 +86,9 @@
   function initTest() {
 
     $('#test').click(function() {
-      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau/albumid/5159344514455780609?kind=photo&alt=rss&authkey=kRBwTSKAawI&hl=en_US';
-      var feed = new google.feeds.Feed(url);
-      feed.load(function(result) {
-
-        if (!result.error) {
-          
-          $('#testdisplay').empty();
-          for (var i = 0; i < result.feed.entries.length; i++) {
-            var entry = result.feed.entries[i];
-            var title = entry.title;
-            var description = entry.content;
-            var link = entry.link;
-
-            $('#testdisplay').append(title + '<br>');
-          }
-        }
+      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau/albumid/5159344514455780609?kind=photo&alt=json&authkey=kRBwTSKAawI&hl=en_US';
+      $.getJSON(url, function(root) {
+        alert(root);
       });
     });
   }
