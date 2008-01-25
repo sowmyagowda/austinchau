@@ -86,9 +86,8 @@
   function initTest() {
 
     $('#test').click(function() {
-      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau?kind=album&alt=rss&hl=en_US';
+      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau/albumid/5159344514455780609?kind=photo&alt=rss&authkey=kRBwTSKAawI&hl=en_US';
       var feed = new google.feeds.Feed(url);
-      feed.setNumEntries(100);
       feed.load(function(result) {
 
         if (!result.error) {
@@ -101,9 +100,6 @@
             var link = entry.link;
 
             $('#testdisplay').append(title + '<br>');
-
-
-
           }
         }
       });
