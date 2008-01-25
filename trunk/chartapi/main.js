@@ -1,3 +1,4 @@
+
 (function() {
   var SCOPE_URL = 'http://www.google.com/calendar/feeds/';
   var calendarService = null;
