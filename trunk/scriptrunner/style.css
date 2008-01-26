@@ -1,0 +1,14 @@
+body {
+}
+
+#display {
+  color: red;
+  font-size: 13px;
+}
+
+#inspect {
+  border: 0px solid red;
+}
+
+#main {
+}
