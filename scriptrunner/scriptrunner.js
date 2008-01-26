@@ -54,9 +54,9 @@
   }
 
   function codePressOnLoad() {
-
+    alert('hello');
     return;
-
+    alert('you');
     var args = getUrlArgs();
 
     var file = args.file;
