@@ -43,10 +43,11 @@
     $('#clear').click(function() {
       CLEAR();   
     });
-
-    CodePress.run();
     
-    initTabs();
+    alert('yo');
+    CodePress.run();
+    alert('ma');
+    //initTabs();
   }  
 
   function initTabs() {
