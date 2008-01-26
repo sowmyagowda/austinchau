@@ -44,10 +44,8 @@
       CLEAR();   
     });
     
-    alert('yo');
     CodePress.run();
-    alert('ma');
-    //initTabs();
+    initTabs();
   }  
 
   function initTabs() {
@@ -55,9 +53,6 @@
   }
 
   function codePressOnLoad() {
-    alert('hello');
-    return;
-    alert('you');
     var args = getUrlArgs();
 
     var file = args.file;
