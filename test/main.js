@@ -22,7 +22,7 @@
     initCalendarTab();
     initMoviesTab();
     initNBATab();
-	initTest();
+	  initTest();
   }
   
   function getImages(tags) {
