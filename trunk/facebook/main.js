@@ -11,8 +11,6 @@
       'xd_receiver.htm', null); 
   }
 
-
-
   // require user to login
   api.requireLogin(function(exception) {
     console.log('Current user id is ' + api.get_session().uid);    
