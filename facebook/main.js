@@ -24,7 +24,6 @@
     var parameters = null;
     var jsonRequest = api._generateJsonRequest(method, parameters);
     
-    console.log(jsonRequest);
     
     jsonRequest.callback = Delegate.create(api, function(result, exception) {
       var apiError = result;
@@ -37,7 +36,7 @@
       jsonRequest.callback.invoke(result, exception);
     });
     jsonRequest.sendRequest();  
-
+    console.log(jsonRequest);
   });
 
   function getSession() {
