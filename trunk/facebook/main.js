@@ -16,6 +16,10 @@
     console.log('Current user id is ' + api.get_session().uid);    
     //getFriends();
 
+   api.users_getLoggedInUser(function(result, exception) {
+     alert('getLoggedInUser');
+   });
+
     api.users_getInfo(
       '828187','name', function(result, exception) {
         alert('hey');
