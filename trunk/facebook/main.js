@@ -33,7 +33,8 @@
         exception = Error.create(apiError.error_msg, apiError);
         result = null;
       }
-      acallback(result, exception);
+      alert('hello');
+      jsonRequest.callback.invoke(result, exception);
     });
     jsonRequest.sendRequest();  
 
