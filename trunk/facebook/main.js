@@ -10,9 +10,10 @@
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
       'xd_receiver.htm', null); 
   }
+  
 
-  function callback(result, exception) {
-    console.log(result);
+  function acallback(result, exception) {
+    alert('hey');
   }
   
   // require user to login
@@ -24,17 +25,18 @@
     var jsonRequest = api._generateJsonRequest(method, parameters);
     
     console.log(jsonRequest);
-  
+    
     jsonRequest.callback = Delegate.create(api, function(result, exception) {
-                var apiError = result;
-                if (!exception && !isUndefined(apiError.error_code)) {
-                    FB.FBDebug.assert(false, 'API error');
-                    exception = Error.create(apiError.error_msg, apiError);
-                    result = null;
-                }
-                callback(result, exception);
-            });
+      var apiError = result;
+      if (!exception && !isUndefined(apiError.error_code)) {
+        FB.FBDebug.assert(false, 'API error');
+        exception = Error.create(apiError.error_msg, apiError);
+        result = null;
+      }
+      acallback(result, exception);
+    });
     jsonRequest.sendRequest();  
+
   });
 
   function getSession() {
