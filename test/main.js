@@ -83,12 +83,26 @@
   }
 
   
-  function initTest() {
+  function initTest() {    
 
     $('#test').click(function() {
-      var url = 'http://picasaweb.google.com/data/feed/base/user/austin.chau/albumid/5159344514455780609?kind=photo&alt=json&authkey=kRBwTSKAawI&hl=en_US';
-      $.getJSON(url, function(root) {
-        alert(root);
+      
+      if ($.draggable != undefined) {
+        return;
+      }
+
+      $.getScript('http://dev.jquery.com/view/tags/ui/1.0.1a/jquery.dimensions.js',
+        function() {
+          $.getScript('http://dev.jquery.com/view/tags/ui/1.0.1a/ui.mouse.js',
+            function() {
+              $.getScript('http://dev.jquery.com/view/tags/ui/1.0.1a/ui.draggable.js',
+                function() {
+                  $.getScript('http://dev.jquery.com/view/tags/ui/1.0.1a/ui.draggable.ext.js',
+                    function() {
+                      $('#testdisplay').draggable();
+                  });
+              });
+          });
       });
     });
   }
