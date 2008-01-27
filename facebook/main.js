@@ -17,8 +17,9 @@
     //getFriends();
 
     api.users_getInfo(
-      828187,'name', function(result, exception) {
-        console.log(result);
+      '828187','name', function(result, exception) {
+        alert('hey');
+	console.log(result);
         console.log(exception);
       }
     );
