@@ -11,22 +11,18 @@
       'xd_receiver.htm', null); 
   }
 
+  function callback(result, ex) {
+    alert('callback');
+  }
+
   // require user to login
   api.requireLogin(function(exception) {
     console.log('Current user id is ' + api.get_session().uid);    
     //getFriends();
+   
+    console.log(api.friends_get(callback));
 
-   api.users_getLoggedInUser(function(result, exception) {
-     alert('getLoggedInUser');
    });
-
-    api.users_getInfo(
-      '828187','name', function(result, exception) {
-        alert('hey');
-	console.log(result);
-        console.log(exception);
-      }
-    );
   });
 
   function getSession() {
