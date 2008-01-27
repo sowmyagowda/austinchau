@@ -22,7 +22,6 @@
    
     console.log(api.friends_get(callback));
 
-   });
   });
 
   function getSession() {
