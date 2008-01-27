@@ -11,17 +11,30 @@
       'xd_receiver.htm', null); 
   }
 
-  function callback(result, ex) {
-    alert('callback');
+  function callback(result, exception) {
+    console.log(result);
   }
-
+  
   // require user to login
   api.requireLogin(function(exception) {
     console.log('Current user id is ' + api.get_session().uid);    
-    //getFriends();
-   
-    console.log(api.friends_get(callback));
 
+    var method = 'friends.get';
+    var parameters = null;
+    var jsonRequest = api._generateJsonRequest(method, parameters);
+    
+    console.log(jsonRequest);
+  
+    jsonRequest.callback = Delegate.create(api, function(result, exception) {
+                var apiError = result;
+                if (!exception && !isUndefined(apiError.error_code)) {
+                    FB.FBDebug.assert(false, 'API error');
+                    exception = Error.create(apiError.error_msg, apiError);
+                    result = null;
+                }
+                callback(result, exception);
+            });
+    jsonRequest.sendRequest();  
   });
 
   function getSession() {
