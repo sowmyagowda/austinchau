@@ -13,10 +13,9 @@
 <!-- Output area to show the output from Facebook API --> <textarea style="width:500px;height:300px;" id="_traceTextBox"></textarea>
   <script type="text/javascript" src="http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js" ></script> 
   <script type="text/javascript"> 
+
 (function() {
-  // Create an ApiClient object, passing app’s api key and 
-  // a site relative url to xd_receiver.htm 
-  
+
   var api = null;
 
   init();
@@ -40,7 +39,6 @@
   }
 
   function getFriends() {
-    console.log(api);
     // Get friends list 
     api.friends_get(function(result, exception) {
       console.log('friends.get');
