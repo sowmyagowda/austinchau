@@ -8,7 +8,7 @@
 
   function init() {
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
-      'xd_receiver.htm', null); 
+      '/xd_receiver.htm', null); 
   }
   
 
@@ -22,24 +22,6 @@
 
     getFriends();
 
-    /*
-    var method = 'friends.get';
-    var parameters = null;
-    var jsonRequest = api._generateJsonRequest(method, parameters);
-    
-    jsonRequest.callback = Delegate.create(api, function(result, exception) {
-      var apiError = result;
-      if (!exception && !isUndefined(apiError.error_code)) {
-        FB.FBDebug.assert(false, 'API error');
-        exception = Error.create(apiError.error_msg, apiError);
-        result = null;
-      }
-      alert('hello');
-      jsonRequest.callback.invoke(result, exception);
-    });
-    jsonRequest.sendRequest();  
-    console.log(jsonRequest);
-    */
   });
 
   function getSession() {
