@@ -15,9 +15,27 @@
     
     // require user to login
     api.requireLogin(function(exception) {
-      console.log('Current user id is ' + api.get_session().uid);    
+
+      var myId = api.get_session().uid
+
+      console.log('my id: ' + myId);    
 
       getFriends();
+
+
+
+      api.friends_getAppUsers(function(result, exception) {
+        console.log(result);
+
+        for (var i=0;i<result.length;i++ ) {
+          var userId = result[i];
+          jQuery('#display').append(userId + '<br>');
+        }
+
+        api.users_getInfo(result[0], ['birthday'], function(result, exception) { 
+          console.log(result); 
+        });       
+      });
 
       /*
       api.users_getLoggedInUser(function(result, exception) {
@@ -44,12 +62,17 @@
         for (var i=0; i<result.length ;i++ ) {
           var friendId = result[i];
           //console.log(friendId);
-          jQuery('#display').append(friendId + '<br>');
-        
+          //jQuery('#display').append(friendId + '<br>');
+          
+          /*
           api.users_getInfo(friendId, 'birthday', function(result, exception) {
-            console.log(result);
-            console.log(exception);
-          });        
+            if (!result) {
+              console.log(result);
+            }
+            //console.log(result);
+            //console.log(exception);
+          });
+          */
         }
 
       });
