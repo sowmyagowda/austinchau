@@ -12,7 +12,66 @@
   hi
 <!-- Output area to show the output from Facebook API --> <textarea style="width:500px;height:300px;" id="_traceTextBox"></textarea>
   <script type="text/javascript" src="http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js" ></script> 
-  <script type="text/javascript" src="main.js">  </script>
+  <script type="text/javascript"> 
+(function() {
+  // Create an ApiClient object, passing app’s api key and 
+  // a site relative url to xd_receiver.htm 
+  
+  var api = null;
+
+  init();
+
+  function init() {
+    api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
+      'xd_receiver.htm', null); 
+  }
+  
+
+  function acallback(result, exception) {
+    alert('hey');
+  }
+  
+  // require user to login
+  api.requireLogin(function(exception) {
+    console.log('Current user id is ' + api.get_session().uid);    
+
+    getFriends();
+
+    /*
+    var method = 'friends.get';
+    var parameters = null;
+    var jsonRequest = api._generateJsonRequest(method, parameters);
+    
+    jsonRequest.callback = Delegate.create(api, function(result, exception) {
+      var apiError = result;
+      if (!exception && !isUndefined(apiError.error_code)) {
+        FB.FBDebug.assert(false, 'API error');
+        exception = Error.create(apiError.error_msg, apiError);
+        result = null;
+      }
+      alert('hello');
+      jsonRequest.callback.invoke(result, exception);
+    });
+    jsonRequest.sendRequest();  
+    console.log(jsonRequest);
+    */
+  });
+
+  function getSession() {
+    return api.session;
+  }
+
+  function getFriends() {
+    console.log(api);
+    // Get friends list 
+    api.friends_get(function(result, exception) {
+      console.log('friends.get');
+      Debug.dump(result, 'friendsResult from non-batch execution ');  
+    });
+  }
+})();
+  
+  </script>
   
   <div id=display></div>
  </body>

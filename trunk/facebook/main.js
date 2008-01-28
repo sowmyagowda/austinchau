@@ -20,10 +20,12 @@
   api.requireLogin(function(exception) {
     console.log('Current user id is ' + api.get_session().uid);    
 
+    getFriends();
+
+    /*
     var method = 'friends.get';
     var parameters = null;
     var jsonRequest = api._generateJsonRequest(method, parameters);
-    
     
     jsonRequest.callback = Delegate.create(api, function(result, exception) {
       var apiError = result;
@@ -37,6 +39,7 @@
     });
     jsonRequest.sendRequest();  
     console.log(jsonRequest);
+    */
   });
 
   function getSession() {
@@ -47,6 +50,7 @@
     console.log(api);
     // Get friends list 
     api.friends_get(function(result, exception) {
+      console.log('friends.get');
       Debug.dump(result, 'friendsResult from non-batch execution ');  
     });
   }
