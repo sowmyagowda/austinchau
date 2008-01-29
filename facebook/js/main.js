@@ -31,7 +31,7 @@
         getAppUsers();
       });
 
-      jQuery('#test').click(function() {
+      jQuery('#getuserinfo').click(function() {
         getUserInfo();
       });
 
@@ -77,7 +77,7 @@
 
     api.friends_get(function(users, exception) {
       
-      users = users.slice(0, 4);
+      users = users.slice(40, 50);
 
       var fields = ['birthday', 'name', 'pic_big'];
 
