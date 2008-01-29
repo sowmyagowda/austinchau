@@ -77,16 +77,27 @@
 
     api.friends_getAppUsers(function(users, exception) {
 
-      var fields = ['birthday'];
+      var fields = ['birthday', 'name'];
 
-        var parameters = {};
-        parameters['uids'] = users.toString();
-        parameters['fields'] = fields.toString();
-        api._callMethod$1('users.getInfo', parameters, function(result, exception) {
-        display(result.birthday);
-        });
+      var parameters = {};
+      parameters['uids'] = users.toString();
+      parameters['fields'] = fields.toString();
+      api._callMethod$1('users.getInfo', parameters, function(result, exception) {
+
+        for (var i=0;i<results.length ;i++ ) {
+          var userInfo = results[i];
+          var name = userInfo['name'];
+          var birthday = userInfo['birthday'];
+
+          display(name + '<br>');
+          display(birthday + '<br>');
+        }
+
+
+      });
 
       return;
+      
       api.users_getInfo(users, fields, function(result, exception) {
 
         display(result.birthday);
