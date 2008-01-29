@@ -126,7 +126,7 @@
       
       users = users.slice(0, 50);
 
-      var fields = ['birthday', 'name', 'pic'];
+      var fields = ['birthday', 'name', 'pic_big'];
 
       var parameters = {};
       parameters['uids'] = users.toString();
@@ -139,7 +139,7 @@
           var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
-          var pic = userInfo['pic'];
+          var pic = userInfo['pic_big'];
 					
 					display(name);
 
