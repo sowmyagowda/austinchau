@@ -35,6 +35,11 @@
         getUserInfo();
       });
 
+			jQuery('#getalbums').click(function() {
+			
+				getPhotoAlbums();
+			});
+
       /*
       api.users_getLoggedInUser(function(result, exception) {
         console.log(result);
