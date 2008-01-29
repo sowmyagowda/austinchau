@@ -63,11 +63,11 @@
 
 		api.friends_get(function(users, exception) {
 
-			users = users.slice(0, 20);
+			users = users.slice(0, 10);
 			
 			for (var i=0;i<users.length;i++) {
 				api._callMethod$1('photos.getAlbums', {uid: users[i]}, function(result, exception) {
-					if (!result) {
+					if (!result.aid) {
 						var aid = result.aid;
 					  console.log(aid);
 					}
