@@ -140,7 +140,12 @@
             display('birthday = null');
           }
 
-          jQuery('<img />').attr({src: pic}).appendTo('#display');
+          if (src) {
+            jQuery('<img />').attr({src: pic}).appendTo('#display');
+          } else {
+            display('image = image');
+          }
+
           display('<br />');
 
         }
