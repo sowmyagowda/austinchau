@@ -71,10 +71,6 @@
 			
 		}
 
-    api._callMethod$1('photos.getAlbums', parameters, function(result, exception) {
-      console.log(result);
-    });
-
     return;
 
     api.photos_getAlbums('628919908', null, function(result, exception) {
