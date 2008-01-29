@@ -57,6 +57,13 @@
   function getUserInfo() {  
     clear();
 
+    api.photos_getAlbums('506481423', null, function(result, exception) {
+      console.log(result);
+    });
+
+    return;
+
+
     api.friends_getAppUsers(function(users, exception) {
 
       var fields = ['birthday'];
