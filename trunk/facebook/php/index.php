@@ -33,17 +33,29 @@
 
     $infos = $facebook->api_client->users_getInfo($friends, $fields);
 
-    foreach($infos as $friend) {
+    foreach($infos as $info) {
 
-      $uid = $friend['uid'];
-      $birthday = $friend['birthday'];
-      $name = $friend['name'];
+      $uid = $info['uid'];
+      $birthday = $info['birthday'];
+      $name = $info['name'];
 
-      $photos = $facebook->api_client->photos_getAlbums($uid);
+      $albums = $facebook->api_client->photos_getAlbums($uid, null);
+      
+      foreach($albums as $album) {
+        $aid = $album['aid'];
+        echo $aid . '<br>';
 
-      echo '<pre>';
-      print_r($photos);
-      echo '</pre>';      
+        $photos = $facebook->api_client->photos_get($uid, $aid, null);
+        
+        echo '<pre>';
+        print_r($photos);
+        echo '</pre>';
+
+        foreach($photos as $photo) {
+          $src = $photo['src_big'];
+          echo '<img src="' . $src . '"><br>';
+        }
+      }       
     }
 
   ?>
