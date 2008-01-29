@@ -91,7 +91,7 @@
 
   }
 
-	function getPictures() {
+	function getPhotos() {
 		api.photos_get('225520', null, null, function(photos, exception) {
 			console.log(photos);
 		});
