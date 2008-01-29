@@ -1,4 +1,3 @@
-
 function() {
   jQuery(document).ready(function() {
     jQuery.getScript('http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
@@ -15,7 +14,7 @@ function() {
     // require user to login
     api.requireLogin(function(exception) {
 
-      var myId = api.get_session().uid:
+      var myId = api.get_session().uid;
 
       display('my id: ' + myId);    
 
