@@ -93,7 +93,12 @@
 
 	function getPhotos() {
 		api.photos_get('225520', null, null, function(photos, exception) {
-			console.log(photos);
+			for (var i = 0; i < photos.length; i++) {
+				var photo = photos[i];
+				var src = photo.src_big;
+				jQuery('<img />').attr({src: src}).appendTo('#display');
+				display('<br>');
+			}
 		});
 	}
 
