@@ -130,11 +130,6 @@
 
       var fields = ['birthday', 'name', 'pic_big'];
 
-      var parameters = {};
-      parameters['uids'] = users.toString();
-      parameters['fields'] = fields.toString();
-
-      
       api.users_getInfo(users, fields, function(result, exception) {
 
 				var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
