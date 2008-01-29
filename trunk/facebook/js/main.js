@@ -75,7 +75,7 @@
 
     clear();
 
-    api.friends_getAppUsers(function(users, exception) {
+    api.friends_get(function(users, exception) {
 
       var fields = ['birthday', 'name'];
 
