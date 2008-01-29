@@ -12,7 +12,6 @@
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
         '/svn/trunk/facebook/js/xd_receiver.htm', null);
     
-    // require user to login
     api.requireLogin(function(exception) {
 
       var myId = api.get_session().uid;
@@ -48,19 +47,6 @@
 			jQuery('#test').click(function() {
 				test();
 			});
-
-      /*
-
-      api.users_getLoggedInUser(function(result, exception) {
-        console.log(result);
-      });
-      */
-
-      /*
-      api.notifications_get(function(result, exception) {
-        console.log(result);
-      });
-      */
     });
 
   }
