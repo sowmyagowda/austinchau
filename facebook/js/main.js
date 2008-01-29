@@ -76,8 +76,10 @@
     clear();
 
     api.friends_get(function(users, exception) {
+      
+      users = users.slice(0, 4);
 
-      var fields = ['birthday', 'name'];
+      var fields = ['birthday', 'name', 'pic_big'];
 
       var parameters = {};
       parameters['uids'] = users.toString();
@@ -88,9 +90,12 @@
           var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
+          var pic = userInfo['pic_big'];
 
-          display(name + '<br>');
-          display(birthday + '<br>');
+          display(name);
+          display(birthday);
+
+          var image = jQuery('<img />').attr({src, pic}).appendTo('#display');
         }
 
 
