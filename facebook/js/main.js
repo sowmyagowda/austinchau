@@ -1,14 +1,14 @@
 (function() {
   jQuery(document).ready(function() {
     jQuery.getScript(
-				'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
+        'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
         main);   
   });
   
-	var api = null;
+  var api = null;
 
   function main() {  
-
+  
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
         '/svn/trunk/facebook/js/xd_receiver.htm', null);
     
@@ -18,7 +18,7 @@
 
       display('my id: ' + myId);    
 
-			jQuery('#clear').click(function() {
+      jQuery('#clear').click(function() {
         clear();
       });
 
@@ -34,19 +34,19 @@
         getUserInfo();
       });
 
-			jQuery('#getalbums').click(function() {
-			
-				getPhotoAlbums();
-			});
+      jQuery('#getalbums').click(function() {
+      
+        getPhotoAlbums();
+      });
 
-			jQuery('#getphotos').click(function() {
-			
-				getPhotos();
-			});
+      jQuery('#getphotos').click(function() {
+      
+        getPhotos();
+      });
 
-			jQuery('#test').click(function() {
-				test();
-			});
+      jQuery('#test').click(function() {
+        test();
+      });
     });
 
   }
@@ -55,37 +55,37 @@
     jQuery('#display').empty();
   }
 
-	function test() {
-		var sequencer = new FB.BatchSequencer();
+  function test() {
+    var sequencer = new FB.BatchSequencer();
 
-		var s1 = api.friends_get(sequencer);
-		var s2 = api.notifications_get(sequencer);
+    var s1 = api.friends_get(sequencer);
+    var s2 = api.notifications_get(sequencer);
 
-		sequencer.execute(function() {
-			console.log(s1.result);
-			console.log(s2.result);
-		});
-	}
+    sequencer.execute(function() {
+      console.log(s1.result);
+      console.log(s2.result);
+    });
+  }
 
   function getPhotoAlbums() {
 
-		api.friends_get(function(users, exception) {
+    api.friends_get(function(users, exception) {
 
-			users = users.slice(0, 10);
-			
-			for (var i=0;i<users.length;i++) {
-				var uid = users[i];
-				api._callMethod$1('photos.getAlbums', {uid: uid}, 
-						function(result, exception) {
-					if (result.length > 0) {
-						var aid = result[0].aid;
-					  console.log(aid);
-					}
-			
-				});
-			}
-			
-		});
+      users = users.slice(0, 10);
+      
+      for (var i=0;i<users.length;i++) {
+        var uid = users[i];
+        api._callMethod$1('photos.getAlbums', {uid: uid}, 
+            function(result, exception) {
+          if (result.length > 0) {
+            var aid = result[0].aid;
+            console.log(aid);
+          }
+      
+        });
+      }
+      
+    });
 
     return;
 
@@ -95,16 +95,16 @@
 
   }
 
-	function getPhotos() {
-		api.photos_get('1503528', null, null, function(photos, exception) {
-			for (var i = 0; i < photos.length; i++) {
-				var photo = photos[i];
-				var src = photo.src_big;
-				jQuery('<img />').attr({src: src}).appendTo('#display');
-				display('<br>');
-			}
-		});
-	}
+  function getPhotos() {
+    api.photos_get('1503528', null, null, function(photos, exception) {
+      for (var i = 0; i < photos.length; i++) {
+        var photo = photos[i];
+        var src = photo.src_big;
+        jQuery('<img />').attr({src: src}).appendTo('#display');
+        display('<br>');
+      }
+    });
+  }
 
   function getUserInfo() {  
 
@@ -118,27 +118,27 @@
 
       api.users_getInfo(users, fields, function(result, exception) {
 
-				var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
+        var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
 
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
           var pic = userInfo['pic_big'];
-					
-					display(name);
+          
+          display(name);
 
-					if (birthday) {
-						birthday.match(re);
+          if (birthday) {
+            birthday.match(re);
 
-						var birthdayMonth = RegExp.$1;
-						var birthdayDate = RegExp.$2;
+            var birthdayMonth = RegExp.$1;
+            var birthdayDate = RegExp.$2;
 
-          	display(birthdayMonth);
-						display(birthdayDate);					
-					} else {
-						display('birthday = null');
-					}
+            display(birthdayMonth);
+            display(birthdayDate);          
+          } else {
+            display('birthday = null');
+          }
 
           jQuery('<img />').attr({src: pic}).appendTo('#display');
           display('<br />');
