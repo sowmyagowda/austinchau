@@ -108,7 +108,7 @@
 
     api.friends_get(function(users, exception) {
       
-      users = users.slice(40, 50);
+      users = users.slice(0, 50);
 
       var fields = ['birthday', 'name', 'pic'];
 
