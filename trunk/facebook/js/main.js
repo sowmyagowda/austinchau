@@ -57,7 +57,7 @@
   function getUserInfo() {  
     clear();
 
-    api.photos_getAlbums('506481423', '3016965419368385', function(result, exception) {
+    api.photos_getAlbums('628919908', null, function(result, exception) {
       console.log(result);
     });
 
