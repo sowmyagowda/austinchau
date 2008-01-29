@@ -125,7 +125,7 @@
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
           var pic = userInfo['pic_big'];
-          var relStatus = userInfo['relatinoship_status'];
+          var relStatus = userInfo['relationship_status'];
 
           display(name);
 
@@ -147,13 +147,14 @@
             display('image = null');
           }
 
+          display('<br />');
+          
           if (relStatus) { 
             display(relStatus);
           } else {
             display('status = null');
           }
 
-          display('<br />');
 
         }
 
