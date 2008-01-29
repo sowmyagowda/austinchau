@@ -66,9 +66,10 @@
 			users = users.slice(0, 10);
 			
 			for (var i=0;i<users.length;i++) {
-				api._callMethod$1('photos.getAlbums', {uid: users[i]}, function(result, exception) {
-					if (!result.aid) {
-						var aid = result.aid;
+				var uid = users[i];
+				api._callMethod$1('photos.getAlbums', {uid: uid}, function(result, exception) {
+					if (result.length > 0) {
+						var aid = result[0].aid;
 					  console.log(aid);
 					}
 				
