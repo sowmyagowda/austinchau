@@ -54,15 +54,14 @@
     jQuery('#display').empty();
   }
 
-  function getUserInfo() {  
-    clear();
+  function getPhotoAlbums() {
 
-        var parameters = {};
-        parameters['uid'] = '628919908';
+    var parameters = {};
+    parameters['uid'] = '628919908';
 
-        api._callMethod$1('photos.getAlbums', parameters, function(result, exception) {
-          console.log(result);
-        });
+    api._callMethod$1('photos.getAlbums', parameters, function(result, exception) {
+      console.log(result);
+    });
 
     return;
 
@@ -70,18 +69,30 @@
       console.log(result);
     });
 
+  }
 
+  function getUserInfo() {  
 
+    clear();
 
     api.friends_getAppUsers(function(users, exception) {
 
       var fields = ['birthday'];
 
+        var parameters = {};
+        parameters['uids'] = users.toString();
+        parameters['fields'] = fields.toString();
+        api._callMethod$1('users.getInfo', parameters, function(result, exception) {
+        display(result.birthday);
+        });
+
+      return;
       api.users_getInfo(users, fields, function(result, exception) {
 
         display(result.birthday);
 
       }); 
+
     });
 
    
