@@ -134,8 +134,8 @@
             var birthdayMonth = RegExp.$1;
             var birthdayDate = RegExp.$2;
 
-            display(birthdayMonth);
-            display(birthdayDate);          
+            display('birthday: month = ' + birthdayMonth + 
+                ' date = ' + birthdayDate);
           } else {
             display('birthday = null');
           }
