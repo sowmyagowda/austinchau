@@ -40,6 +40,11 @@
 				getPhotoAlbums();
 			});
 
+			jQuery('#getphotos').click(function() {
+			
+				getPhotos();
+			});
+
       /*
       api.users_getLoggedInUser(function(result, exception) {
         console.log(result);
@@ -85,6 +90,12 @@
     });
 
   }
+
+	function getPictures() {
+		api.photos_get('225520', null, null, function(photos, exception) {
+			console.log(photos);
+		});
+	}
 
   function getUserInfo() {  
 
