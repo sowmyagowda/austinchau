@@ -117,14 +117,27 @@
       parameters['fields'] = fields.toString();
       api._callMethod$1('users.getInfo', parameters, function(result, exception) {
 
+				var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
+
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
           var pic = userInfo['pic'];
+					
+					display(name);
 
-          display(name);
-          display(birthday);
+					if (birthday) {
+						birthday.match(re);
+
+						var birthdayMonth = RegExp.$1;
+						var birthdayDate = RegExp.$2;
+
+          	display(birthdayMonth);
+						display(birthdayDate);					
+					} else {
+						display('birthday = null');
+					}
 
           jQuery('<img />').attr({src: pic}).appendTo('#display');
           display('<br />');
