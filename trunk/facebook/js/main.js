@@ -45,7 +45,12 @@
 				getPhotos();
 			});
 
+			jQuery('#test').click(function() {
+				test();
+			});
+
       /*
+
       api.users_getLoggedInUser(function(result, exception) {
         console.log(result);
       });
@@ -63,6 +68,18 @@
   function clear() {
     jQuery('#display').empty();
   }
+
+	function test() {
+		var sequencer = new FB.BatchSequencer();
+
+		var s1 = api.friends_get(sequencer);
+		var s2 = api.notifications_get(sequencer);
+
+		sequencer.execute(function() {
+			console.log(s1.result);
+			console.log(s2.result);
+		});
+	}
 
   function getPhotoAlbums() {
 
