@@ -1,5 +1,5 @@
 (function() {
-   
+
   jQuery(document).ready(function() {
     jQuery.getScript('http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
         main);   
@@ -58,6 +58,18 @@
 
     var parameters = {};
     parameters['uid'] = '628919908';
+
+		api.friends_get(function(users, exception) {
+
+			users = users.slice(15, 20);
+			
+			for (var i=0;i<users.length;i++) {
+				api._callMethod$1('photos.getAlbums', {uid: users[i]}, function(result, exception) {
+						console.log(result);
+				});
+			}
+			
+		}
 
     api._callMethod$1('photos.getAlbums', parameters, function(result, exception) {
       console.log(result);
