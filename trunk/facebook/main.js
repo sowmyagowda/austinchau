@@ -1,17 +1,16 @@
 (function() {
-  // Create an ApiClient object, passing app’s api key and 
-  // a site relative url to xd_receiver.htm 
-  
+   
   jQuery(document).ready(function() {
-    
-    var api = null;
+    jQuery.getScript('http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
+        main);   
+  });
 
-    init();
+  var api = null;
 
-    function init() {
-      api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
-        '/xd_receiver.htm', null); 
-    }  
+  function main() {  
+
+    api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
+        '/xd_receiver.htm', null);
     
     // require user to login
     api.requireLogin(function(exception) {
@@ -20,21 +19,16 @@
 
       console.log('my id: ' + myId);    
 
-      getFriends();
+      jQuery('#clear').click(function() {
+        clear();
+      });
 
+      jQuery('#getallfriends').click(function() {
+        getAllFriends();
+      });
 
-
-      api.friends_getAppUsers(function(result, exception) {
-        console.log(result);
-
-        for (var i=0;i<result.length;i++ ) {
-          var userId = result[i];
-          jQuery('#display').append(userId + '<br>');
-        }
-
-        api.users_getInfo(result[0], ['birthday'], function(result, exception) { 
-          console.log(result); 
-        });       
+      jQuery('#getappusers').click(function() {
+        getAppUsers();
       });
 
       /*
@@ -48,35 +42,39 @@
         console.log(result);
       });
       */
-
-
-
     });
 
-    function getFriends() {
-      // Get friends list 
-      api.friends_get(function(result, exception) {
-        
-        var friend = result[0];
+  }
 
-        for (var i=0; i<result.length ;i++ ) {
-          var friendId = result[i];
-          //console.log(friendId);
-          //jQuery('#display').append(friendId + '<br>');
-          
-          /*
-          api.users_getInfo(friendId, 'birthday', function(result, exception) {
-            if (!result) {
-              console.log(result);
-            }
-            //console.log(result);
-            //console.log(exception);
-          });
-          */
-        }
+  function clear() {
+    jQuery('#display').empty();
+  }
 
-      });
-    }
-  });
+  function getAllFriends() {
+    clear();
+    api.friends_get(function(result, exception) {
+
+      for (var i=0; i<result.length ;i++ ) {
+        var friendId = result[i];
+        display(friendId);
+      }
+
+    });
+  }
+
+  function getAppUsers() {
+    clear();
+    api.friends_getAppUsers(function(result, exception) {
+
+      for (var i=0;i<result.length;i++ ) {
+        var userId = result[i];
+        display(userId);
+      }
+    });
+  }
+
+  function display(text) {
+    jQuery('#display').append(text + '<br>');
+  }
 
 })();
