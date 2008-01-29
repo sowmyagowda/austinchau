@@ -59,7 +59,6 @@
 
         var parameters = {};
         parameters['uid'] = '628919908';
-        parameters['aids'] = null;
 
         api._callMethod$1('photos.getAlbums', parameters, function(result, exception) {
           console.log(result);
