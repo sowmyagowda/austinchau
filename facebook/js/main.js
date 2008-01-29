@@ -114,7 +114,7 @@
       
       users = users.slice(0, 100);
 
-      var fields = ['birthday', 'name', 'pic_big'];
+      var fields = ['birthday', 'name', 'pic_big', 'relationship_status'];
 
       api.users_getInfo(users, fields, function(result, exception) {
 
@@ -125,7 +125,8 @@
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
           var pic = userInfo['pic_big'];
-          
+          var relStatus = userInfo['relatinoship_status'];
+
           display(name);
 
           if (birthday) {
@@ -144,6 +145,12 @@
             jQuery('<img />').attr({src: pic}).appendTo('#display');
           } else {
             display('image = null');
+          }
+
+          if (relStatus) 
+            display(relStatus);
+          } else {
+            display('status = null');
           }
 
           display('<br />');
