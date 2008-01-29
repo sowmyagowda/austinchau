@@ -84,8 +84,8 @@
       parameters['fields'] = fields.toString();
       api._callMethod$1('users.getInfo', parameters, function(result, exception) {
 
-        for (var i=0;i<results.length ;i++ ) {
-          var userInfo = results[i];
+        for (var i=0;i<result.length ;i++ ) {
+          var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
 
