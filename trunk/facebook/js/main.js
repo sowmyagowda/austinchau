@@ -10,14 +10,14 @@
   function main() {  
 
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
-        '/xd_receiver.htm', null);
+        '/svn/trunk/facebook/js/xd_receiver.htm', null);
     
     // require user to login
     api.requireLogin(function(exception) {
 
       var myId = api.get_session().uid
 
-      console.log('my id: ' + myId);    
+      display('my id: ' + myId);    
 
       jQuery('#clear').click(function() {
         clear();
@@ -29,6 +29,10 @@
 
       jQuery('#getappusers').click(function() {
         getAppUsers();
+      });
+
+      jQuery('#test').click(function() {
+        getUserInfo();
       });
 
       /*
@@ -48,6 +52,23 @@
 
   function clear() {
     jQuery('#display').empty();
+  }
+
+  function getUserInfo() {  
+    clear();
+
+    api.friends_getAppUsers(function(users, exception) {
+
+      var fields = ['birthday'];
+
+      api.users_getInfo(users, fields, function(result, exception) {
+
+        display(result.birthday);
+
+      }); 
+    });
+
+   
   }
 
   function getAllFriends() {
