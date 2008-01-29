@@ -2,7 +2,7 @@
 
 <html>
  <head>
-  <title>Facebook JS App</title>
+  <title>Facebook PHP App</title>
   <meta name="Generator" content="EditPlus">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
@@ -24,19 +24,28 @@
     
 
     echo 'your id is: ' . $user_id . '<br>';
-    
-    $friends = $facebook->api_client->friends_get();
+
+    $friends = $facebook->api_client->friends_getAppUsers();
 
     $fields[] = 'birthday';
     $fields[] = 'name';
+    $fields[] = 'about_me';
 
     $infos = $facebook->api_client->users_getInfo($friends, $fields);
 
     foreach($infos as $friend) {
+
+      $uid = $friend['uid'];
+      $birthday = $friend['birthday'];
+      $name = $friend['name'];
+
+      $photos = $facebook->api_client->photos_getAlbums($uid);
+
       echo '<pre>';
-      print_r($friend);
+      print_r($photos);
       echo '</pre>';      
     }
+
   ?>
   
   <div id=display></div>
