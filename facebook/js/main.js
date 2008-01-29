@@ -39,7 +39,7 @@
 			
 				getPhotoAlbums();
 			});
- 
+
 			jQuery('#getphotos').click(function() {
 			
 				getPhotos();
