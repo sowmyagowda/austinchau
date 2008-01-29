@@ -128,6 +128,12 @@
           var relStatus = userInfo['relationship_status'];
 
           display(name);
+          
+          if (relStatus) { 
+            display(relStatus);
+          } else {
+            display('status = null');
+          }
 
           if (birthday) {
             birthday.match(re);
@@ -148,14 +154,6 @@
           }
 
           display('<br />');
-          
-          if (relStatus) { 
-            display(relStatus);
-          } else {
-            display('status = null');
-          }
-
-
         }
 
       });
