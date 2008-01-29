@@ -95,7 +95,8 @@
           display(name);
           display(birthday);
 
-          jQuery('<br>').appendTo('<img />').attr({src: pic}).appendTo('#display');
+          jQuery('<img />').attr({src: pic}).appendTo('#display').append('<br>');
+
         }
 
 
