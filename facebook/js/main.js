@@ -122,6 +122,7 @@
 
   function getUserInfo() {  
 
+
     clear();
 
     api.friends_get(function(users, exception) {
