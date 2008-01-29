@@ -133,8 +133,9 @@
       var parameters = {};
       parameters['uids'] = users.toString();
       parameters['fields'] = fields.toString();
-      api._callMethod$1('users.getInfo', parameters, 
-					function(result, exception) {
+
+      
+      api.users_getInfo(users, fields, function(result, exception) {
 
 				var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
 
@@ -161,22 +162,11 @@
           jQuery('<img />').attr({src: pic}).appendTo('#display');
           display('<br />');
 
-
         }
-
 
       });
 
-      return;
-      
-      api.users_getInfo(users, fields, function(result, exception) {
-
-        display(result.birthday);
-
-      }); 
-
     });
-
    
   }
 
