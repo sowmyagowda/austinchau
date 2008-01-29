@@ -14,11 +14,10 @@
  <body>
 
   <?php
-    /*
     require_once 'facebook.php';
 
-    $appapikey = '88f61278db03559135c4b95c95c2a2aa';
-    $appsecret = '61daf02e3ae3a55652b09826b3e5afba';
+    $appapikey = '01dab21b45b28fd1ac4ffc6d8c75f970';
+    $appsecret = '14376d6e250c7683e10ae35e155037e2';
 
     $facebook = new Facebook($appapikey, $appsecret);
     $user_id = $facebook->require_login();
@@ -38,13 +37,8 @@
       print_r($friend);
       echo '</pre>';      
     }
-    */
   ?>
   
-  <input type=button id=getallfriends value='getAllFriends'> &nbsp;
-  <input type=button id=getappusers value='getAppUsers'><br>  
-  <br>
-  <input type=button id=clear value='clear'><br><br> 
   <div id=display></div>
  </body>
 </html>
