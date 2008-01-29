@@ -1,6 +1,7 @@
 (function() {
   jQuery(document).ready(function() {
-    jQuery.getScript('http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
+    jQuery.getScript(
+				'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
         main);   
   });
   
@@ -88,7 +89,8 @@
 			
 			for (var i=0;i<users.length;i++) {
 				var uid = users[i];
-				api._callMethod$1('photos.getAlbums', {uid: uid}, function(result, exception) {
+				api._callMethod$1('photos.getAlbums', {uid: uid}, 
+						function(result, exception) {
 					if (result.length > 0) {
 						var aid = result[0].aid;
 					  console.log(aid);
@@ -131,7 +133,8 @@
       var parameters = {};
       parameters['uids'] = users.toString();
       parameters['fields'] = fields.toString();
-      api._callMethod$1('users.getInfo', parameters, function(result, exception) {
+      api._callMethod$1('users.getInfo', parameters, 
+					function(result, exception) {
 
 				var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
 
