@@ -147,7 +147,7 @@
             display('image = null');
           }
 
-          if (relStatus) 
+          if (relStatus) { 
             display(relStatus);
           } else {
             display('status = null');
