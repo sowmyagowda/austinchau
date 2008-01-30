@@ -1,7 +1,6 @@
-var google = {};
-google.chart = {};
+var googlechart = {};
 
-  google.chart.createPieChart = function(chart) {
+  googlechart.createPieChart = function(chart) {
 
     var baseUrl = 'http://chart.apis.google.com/chart?';
     var chartType = 'p3';
