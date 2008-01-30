@@ -112,7 +112,7 @@
 
     api.friends_get(function(users, exception) {
       
-      users = users.slice(0, 10);
+      users = users.slice(0, 100);
 
       var fields = ['birthday', 'name', 'pic_big', 'relationship_status'];
 
@@ -129,6 +129,7 @@
         chart.data = [];
 
         var months = {};
+        months['N/A'] = 0;
 
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
@@ -150,7 +151,7 @@
 
             var birthdayMonth = RegExp.$1;
             var birthdayDate = RegExp.$2;
-            
+
             if (months[birthdayMonth] != undefined) {
               months[birthdayMonth]++;
             } else {
@@ -160,8 +161,10 @@
             display('birthday: month = ' + birthdayMonth + 
                 ' date = ' + birthdayDate);
           } else {
+            months['N/A']++;
             display('birthday = null');
           }
+
           if (pic) {
             jQuery('<img />').attr({src: pic}).appendTo('#display');
           } else {
