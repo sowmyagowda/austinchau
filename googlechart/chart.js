@@ -27,11 +27,6 @@ var googlechart = {};
     var colors = [];
     if (chart.color) {
       colors.push(chart.color);
-    } else {
-      for (var i=0;i<chart.data.length ;i++ ) {
-        var color = chart.data[i].color;
-        colors.push(color);
-      }
     }
     finalUrl.push('&amp;');
     finalUrl.push('chco=');
@@ -43,11 +38,11 @@ var googlechart = {};
 
     console.log(chart);
 
-    for (var i=0;i<chart.items.length ;i++ ) {
+    for (var i = 0; i < chart.items.length; i++ ) {
       
       var item = chart.items[i];
       var itemName = item.name;
-
+      console.log(itemName);
      
       if (chartData[itemName] == undefined) {      
         var data = {};
