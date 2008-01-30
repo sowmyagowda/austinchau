@@ -36,7 +36,7 @@ var googlechart = {};
       var item = chart.items[i];
       var itemName = item.name;
 
-      if (!chartData[itemName]) {      
+      if (!(itemName in chartData)) {      
         var data = {};
         data.id = itemName;
         data.label = item.label;
