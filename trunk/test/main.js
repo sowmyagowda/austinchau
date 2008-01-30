@@ -346,6 +346,5 @@
     //alert("There was an error!");
     //alert(;
   }
-  }
 
 })();
