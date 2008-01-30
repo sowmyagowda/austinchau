@@ -44,7 +44,7 @@ var googlechart = {};
       var itemName = item.name;
       console.log(itemName);
      
-      if (chartData[itemName] == undefined) {      
+      if (!chartData[itemName]) {      
         var data = {};
         data.id = itemName;
         data.label = item.label;
