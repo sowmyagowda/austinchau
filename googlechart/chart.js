@@ -56,8 +56,7 @@ var googlechart = {};
 
       data.percent = ((data.count / totalCount) * 100).toFixed(2);
       percentData.push(data.percent);
-      labelData.push(data.label + ' (' + data.count 
-          + ') ' + data.percent + '%');
+      labelData.push(data.label + ' ' + data.percent + '%');
     }
 
     finalUrl.push('&amp;'); 
