@@ -43,7 +43,8 @@ var googlechart = {};
       var item = chart.items[i];
       var itemName = item.name;
       console.log(itemName);
-     
+      console.log(chartData.itemName);
+
       if (!chartData[itemName]) {      
         var data = {};
         data.id = itemName;
