@@ -62,7 +62,9 @@ var googlechart = {};
     var percentData = [];
     var labelData = [];
 
-    for (data in chartData) {
+    for (dataId in chartData) {
+      var data = chartData[dataId];
+
       data.percent = ((data.count / totalCount) * 100).toFixed(2);
       percentData.push(data.percent);
       labelData.push(data.label);
