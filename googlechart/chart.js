@@ -50,7 +50,7 @@ var googlechart = {};
         data.id = itemName;
         data.label = item.label;
         data.count = 1;
-        chartData[id] = data;
+        chartData[data.id] = data;
       } else {
         var data = chartData[itemName];
         console.log('found it: ' + data);
