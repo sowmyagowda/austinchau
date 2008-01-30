@@ -151,10 +151,10 @@
             var birthdayMonth = RegExp.$1;
             var birthdayDate = RegExp.$2;
             
-            if (month[birthdayMonth] != undefined) {
-              month[birthdayMonth]++;
+            if (months[birthdayMonth] != undefined) {
+              months[birthdayMonth]++;
             } else {
-              month[birthdayMonth] = 1;
+              months[birthdayMonth] = 1;
             }
 
             display('birthday: month = ' + birthdayMonth + 
