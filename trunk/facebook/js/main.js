@@ -176,8 +176,7 @@
          count +=  months[month];
         }
         for (month in months) {
-          var percent = (months[month] / count) * 100;
-          percent.toFixed(2);
+          var percent = ((months[month] / count) * 100).toFixed(2);
           chart.data.push({percent: (percent), label: month});
         }
         
