@@ -18,11 +18,6 @@ var googlechart = {};
     finalUrl.push('x');
     finalUrl.push(chart.height);
     
-    // title
-    finalUrl.push('&amp;');
-    finalUrl.push('chtt=');
-    finalUrl.push(encodeURIComponent(chart.title));
-    
     // colors
     var colors = [];
     if (chart.color) {
@@ -61,7 +56,8 @@ var googlechart = {};
 
       data.percent = ((data.count / totalCount) * 100).toFixed(2);
       percentData.push(data.percent);
-      labelData.push(data.label);
+      labelData.push(data.label + ' (' + data.count 
+          + ') ' + data.percent + '%');
     }
 
     finalUrl.push('&amp;'); 
@@ -71,6 +67,11 @@ var googlechart = {};
     finalUrl.push('&amp;');
     finalUrl.push('chl=');
     finalUrl.push(encodeURI(labelData.join('|')));          
+    
+    // title
+    finalUrl.push('&amp;');
+    finalUrl.push('chtt=');
+    finalUrl.push(encodeURIComponent(chart.title + '(' + totalCount + ')'));
 
     return finalUrl.join('');
   }
