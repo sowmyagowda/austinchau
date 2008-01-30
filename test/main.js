@@ -111,7 +111,32 @@
   }
 
   function initChart() {
+
+    $('#chart').click(function() {
+      
+    });
+    
     var chartData = {};
+    chartData.type = 'p3';
+    chartData.width = '1000';
+    chartData.height = '300';
+    chartData.title = 'test chart';
+    chartData.color = 'ffffff';
+
+    chartData.items = [
+      {
+        name: 'May',
+        label: 'May birthday'
+      },
+      {
+        name: 'May',
+        label: 'May birthday'
+      },
+      {
+        name: 'June',
+        label: 'June birthday'
+      }
+    ];
 
     var imageUrl = googlechart.getChartUrl(chartData);
   }
