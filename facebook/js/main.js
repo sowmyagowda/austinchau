@@ -125,9 +125,10 @@
         chart.height = 300;
         chart.title = 'birthday';
         chart.color = '6633FF';
-    
+
         chart.data = [];
-  
+
+        var months = {};
 
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
@@ -150,10 +151,10 @@
             var birthdayMonth = RegExp.$1;
             var birthdayDate = RegExp.$2;
             
-            if (chart.data[birthdayMonth] != undefined) {
-              chart.data[birthdayMonth]++;
+            if (month[birthdayMonth] != undefined) {
+              month[birthdayMonth]++;
             } else {
-              chart.data[birthdayMonth] = 1;
+              month[birthdayMonth] = 1;
             }
 
             display('birthday: month = ' + birthdayMonth + 
@@ -170,6 +171,16 @@
           display('<br />');
         }
 
+        var count = 0;
+        for (month in months) {
+         count +=  months[month];
+        }
+        for (month in months) {
+          var percent = (months[month] / count) * 100;
+          percent.toFixed(2);
+          chart.data.push({percent: (percent), label: month});
+        }
+        
         console.log(chart);
 
         var chartUrl = googlechart.createPieChart(chart);
