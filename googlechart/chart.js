@@ -1,5 +1,63 @@
 var googlechart = {};
 
+  googlechart.getChartUrl = function(chart) {
+
+    var baseUrl = 'http://chart.apis.google.com/chart?';
+    var finalUrl = [];
+
+    finalUrl.push(baseUrl);
+
+    // chart type
+    finalUrl.push('cht=');
+    finalUrl.push(chart.chartType); 
+
+    // dimension
+    finalUrl.push('&amp;');
+    finalUrl.push('chs=');
+    finalUrl.push(chart.width);
+    finalUrl.push('x');
+    finalUrl.push(chart.height);
+    
+    // title
+    finalUrl.push('&amp;');
+    finalUrl.push('chtt=');
+    finalUrl.push(encodeURIComponent(chart.title));
+    
+    // colors
+    var colors = [];
+    if (chart.color) {
+      colors.push(chart.color);
+    } else {
+      for (var i=0;i<chart.data.length ;i++ ) {
+        var color = chart.data[i].color;
+        colors.push(color);
+      }
+    }
+    finalUrl.push('&amp;');
+    finalUrl.push('chco=');
+    finalUrl.push(colors.join(',')); 
+     
+    // labels
+    var labels = [];
+    for (var i=0;i<chart.data.length ;i++ ) {
+      labels.push(chart.data[i].label);
+    }
+    finalUrl.push('&amp;');
+    finalUrl.push('chl=');
+    finalUrl.push(encodeURI(labels.join('|')));          
+    
+    // data
+    var data = [];
+    for (var i=0;i<chart.data.length ;i++ ) {
+      data.push(chart.data[i].percent);
+    }
+    finalUrl.push('&amp;'); 
+    finalUrl.push('chd=t:');
+    finalUrl.push(data.join(','));
+
+    return finalUrl.join('');
+  }
+
   googlechart.createPieChart = function(chart) {
 
     var baseUrl = 'http://chart.apis.google.com/chart?';
