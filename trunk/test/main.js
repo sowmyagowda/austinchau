@@ -117,7 +117,7 @@
     });
     
     var chartData = {};
-    chartData.type = 'p3';
+    chartData.type = 'p';
     chartData.width = '1000';
     chartData.height = '300';
     chartData.title = 'test chart';
