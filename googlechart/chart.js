@@ -9,7 +9,6 @@ var googlechart = {};
     finalUrl.push(baseUrl);
 
     // chart type
-    finalUrl.push('&amp;');
     finalUrl.push('cht=');
     finalUrl.push(chartType); 
 
