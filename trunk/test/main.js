@@ -139,6 +139,9 @@
     ];
 
     var imageUrl = googlechart.getChartUrl(chartData);
+    console.log(imageUrl);
+
+    $('#chartdisplay').append('<img src="' + imageUrl + '"><br>');
   }
 
   function initMoviesTab() {
