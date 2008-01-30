@@ -131,12 +131,17 @@
         var months = {};
         months['N/A'] = 0;
 
+        var chartData = [];
+
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
           var name = userInfo['name'];
           var birthday = userInfo['birthday'];
           var pic = userInfo['pic_big'];
           var relStatus = userInfo['relationship_status'];
+
+          var birthdayMonth = null;
+          var birthdayDate = null;
 
           display(name);
           
@@ -148,22 +153,24 @@
 
           if (birthday) {
             birthday.match(re);
-
-            var birthdayMonth = RegExp.$1;
-            var birthdayDate = RegExp.$2;
-
-            if (months[birthdayMonth] != undefined) {
-              months[birthdayMonth]++;
-            } else {
-              months[birthdayMonth] = 1;
-            }
-
-            display('birthday: month = ' + birthdayMonth + 
-                ' date = ' + birthdayDate);
+            birthdayMonth = RegExp.$1;
+            birthdayDate = RegExp.$2;
           } else {
-            months['N/A']++;
-            display('birthday = null');
+            birthdayMonth = 'N/A';
+            birthdayDate = 'N/A';
           }
+
+          display('birthday: month = ' + birthdayMonth + 
+              ' date = ' + birthdayDate);
+
+          chartData.type = 'p';
+          chartData.width = '1000';
+          chartData.height = '300';
+          chartData.title = 'Birthday Months Breakdown';
+          chartData.color = '333333';
+
+          chartData.items = [];
+          chartData.items.push({name: birthdayMonth, label: birthdayMonth});
 
           if (pic) {
             jQuery('<img />').attr({src: pic}).appendTo('#display');
@@ -174,17 +181,7 @@
           display('<br />');
         }
 
-        var count = 0;
-        for (month in months) {
-         count +=  months[month];
-        }
-        for (month in months) {
-          var percent = ((months[month] / count) * 100).toFixed(2);
-          var label = month + ' (' + months[month]  + ') ' +  percent + '%';
-          chart.data.push({percent: (percent), label: label});
-        }
-
-        var chartUrl = googlechart.createPieChart(chart);
+        var chartUrl = googlechart.getChartUrl(chartData);
 
         jQuery('<img src="' + chartUrl  + '">').appendTo('#display');
 
