@@ -52,6 +52,7 @@ var googlechart = {};
         chartData[id] = data;
       } else {
         var data = chartData[itemName];
+        console.log('found it: ' + data);
         data.count++;
       }                  
     }
