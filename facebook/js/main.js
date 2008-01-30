@@ -184,7 +184,7 @@
 
         var chartUrl = googlechart.createPieChart(chart);
 
-        jQuery('<img />').attr({src: chartUrl}).appendTo('#display');
+        jQuery('<img src="' + chartUrl  + '">').appendTo('#display');
 
         display('<br />');
       });
