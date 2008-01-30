@@ -126,7 +126,7 @@ var googlechart = {};
     return finalUrl.join('');
   }
    
-  google.chart.simpleEncode = function(values) {
+  googlechart.simpleEncode = function(values) {
    
     var simpleEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
