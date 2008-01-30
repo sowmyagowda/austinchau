@@ -182,8 +182,6 @@
           var percent = ((months[month] / count) * 100).toFixed(2);
           chart.data.push({percent: (percent), label: month});
         }
-        
-        console.log(chart);
 
         var chartUrl = googlechart.createPieChart(chart);
 
