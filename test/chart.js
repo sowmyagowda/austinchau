@@ -60,7 +60,7 @@ var googlechart = {};
     return finalUrl.join('');
   }
 
-  google.chart.createLineChart = function() {
+  googlechart.createLineChart = function() {
     var baseUrl = 'http://chart.apis.google.com/chart?';
 
     var title = 'Austin Chau';
