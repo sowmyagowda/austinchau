@@ -54,13 +54,10 @@ var googlechart = {};
         data.count = 1;
         chartData[id] = data;
       } else {
-        console.log(chartData);
         var data = chartData[itemName];
         data.count++;
       }                  
     }
-
-    console.log(chartData);
 
     var percentData = [];
     var labelData = [];
