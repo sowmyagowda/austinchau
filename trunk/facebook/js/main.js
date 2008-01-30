@@ -170,6 +170,8 @@
           display('<br />');
         }
 
+        console.log(chart);
+
         var chartUrl = googlechart.createPieChart(chart);
 
         jQuery('<img />').attr({src: chartUrl}).appendTo('#display');
