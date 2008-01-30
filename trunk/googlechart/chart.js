@@ -32,12 +32,10 @@ var googlechart = {};
     finalUrl.push('chco=');
     finalUrl.push(colors.join(',')); 
      
-    // data
+    // data & label
     var chartData = {};
     var totalCount = chart.items.length;
-
-    console.log(chart);
-
+    
     for (var i = 0; i < chart.items.length; i++ ) {
       
       var item = chart.items[i];
@@ -53,12 +51,9 @@ var googlechart = {};
         chartData[data.id] = data;
       } else {
         var data = chartData[itemName];
-        console.log('found it: ' + data);
         data.count++;
       }                  
     }
-
-    console.log(chartData);
 
     var percentData = [];
     var labelData = [];
