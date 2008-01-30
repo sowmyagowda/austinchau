@@ -121,7 +121,7 @@
     chartData.width = '1000';
     chartData.height = '300';
     chartData.title = 'test chart';
-    chartData.color = 'ffffff';
+    chartData.color = '333333';
 
     chartData.items = [
       {
