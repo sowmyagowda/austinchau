@@ -9,7 +9,7 @@ var googlechart = {};
 
     // chart type
     finalUrl.push('cht=');
-    finalUrl.push(chart.chartType); 
+    finalUrl.push(chart.type); 
 
     // dimension
     finalUrl.push('&amp;');
