@@ -16,7 +16,7 @@
 
     initTabs(); 
   }  
-  
+
   function initTabs() {
     $("#tabs > ul").tabs();
     initCalendarTab();
@@ -24,7 +24,8 @@
     initNBATab();
 	  initTest();
   }
-  
+ 
+
   function getImages(tags) {
     $.getJSON(
       "http://api.flickr.com/services/feeds/photos_public.gne?tags=" + encodeURI(tags) + "&tagmode=any&format=json&jsoncallback=?", 
