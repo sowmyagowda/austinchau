@@ -120,6 +120,15 @@
 
         var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
 
+        var chart = {};
+        chart.width = 1000;
+        chart.height = 300;
+        chart.title = 'birthday';
+        chart.color = '6633FF';
+    
+        chart.data = [];
+  
+
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
           var name = userInfo['name'];
@@ -140,13 +149,18 @@
 
             var birthdayMonth = RegExp.$1;
             var birthdayDate = RegExp.$2;
+            
+            if (chart.data[birthdayMonth] != undefined) {
+              chart.data[birthdayMonth]++;
+            } else {
+              chart.data[birthdayMonth] = 1;
+            }
 
             display('birthday: month = ' + birthdayMonth + 
                 ' date = ' + birthdayDate);
           } else {
             display('birthday = null');
           }
-
           if (pic) {
             jQuery('<img />').attr({src: pic}).appendTo('#display');
           } else {
@@ -156,6 +170,11 @@
           display('<br />');
         }
 
+        var chartUrl = googlechart.createPieChart(chart);
+
+        jQuery('<img />').attr({src: chartUrl}).appendTo('#display');
+
+        display('<br />');
       });
 
     });
