@@ -180,7 +180,6 @@
           display('<br />');
         }
 
-        console.log(chartData);
 
         var chartUrl = googlechart.getChartUrl(chartData);
 
