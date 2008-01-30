@@ -234,7 +234,7 @@
       chart.data.push({percent: percent, label: label});      
     }    
   
-    var chartUrl = google.chart.createPieChart(chart);
+    var chartUrl = googlechart.createPieChart(chart);
     var image = '<img src="' + chartUrl + '">';
 
     $('#chart').empty();
