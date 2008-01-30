@@ -70,7 +70,7 @@ var googlechart = {};
     // title
     finalUrl.push('&amp;');
     finalUrl.push('chtt=');
-    finalUrl.push(encodeURIComponent(chart.title + '(' + totalCount + ')'));
+    finalUrl.push(encodeURIComponent(chart.title + ' (Total: ' + totalCount + ')'));
 
     return finalUrl.join('');
   }
