@@ -132,6 +132,12 @@
         months['N/A'] = 0;
 
         var chartData = [];
+        chartData.type = 'p';
+        chartData.width = '1000';
+        chartData.height = '300';
+        chartData.title = 'Birthday Months Breakdown';
+        chartData.color = '333333';
+        chartData.items = [];
 
         for (var i=0;i<result.length ;i++ ) {
           var userInfo = result[i];
@@ -163,13 +169,6 @@
           display('birthday: month = ' + birthdayMonth + 
               ' date = ' + birthdayDate);
 
-          chartData.type = 'p';
-          chartData.width = '1000';
-          chartData.height = '300';
-          chartData.title = 'Birthday Months Breakdown';
-          chartData.color = '333333';
-
-          chartData.items = [];
           chartData.items.push({name: birthdayMonth, label: birthdayMonth});
 
           if (pic) {
@@ -180,6 +179,8 @@
 
           display('<br />');
         }
+
+        console.log(chartData);
 
         var chartUrl = googlechart.getChartUrl(chartData);
 
