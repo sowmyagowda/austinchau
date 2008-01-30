@@ -22,29 +22,31 @@
     initCalendarTab();
     initMoviesTab();
     initNBATab();
-	  initTest();
+	  initChart();
+    initTest();    
   }
  
 
   function getImages(tags) {
     $.getJSON(
-      "http://api.flickr.com/services/feeds/photos_public.gne?tags=" + encodeURI(tags) + "&tagmode=any&format=json&jsoncallback=?", 
-      function(data){        
+        "http://api.flickr.com/services/feeds/photos_public.gne?tags=" + 
+        encodeURI(tags) + "&tagmode=any&format=json&jsoncallback=?", 
+        function(data){        
 
-        $.each(data.items, function(i,item){
-          $("<img/>").attr("src", item.media.m).appendTo("#moviedisplay").click(
-              function() {                  
-                var description = item.description;
-                description = description.replace(/&lt;/g,"<");
-                description = description.replace(/&gt;/g,">");  
-                description = description.replace(/&quot;/g,"\"");              
-                //alert(description);
-                alert(tags);
-              }
-          );
-        });
-      }
-    );
+          $.each(data.items, function(i,item){
+            $("<img/>").attr("src", item.media.m).appendTo("#moviedisplay").click(
+                function() {                  
+                  var description = item.description;
+                  description = description.replace(/&lt;/g,"<");
+                  description = description.replace(/&gt;/g,">");  
+                  description = description.replace(/&quot;/g,"\"");              
+                  //alert(description);
+                  alert(tags);
+                }
+            );
+          });
+        }
+   );
   }
   
   function initCalendarTab() {
@@ -106,6 +108,12 @@
           });
       });
     });
+  }
+
+  function initChart() {
+    var chartData = {};
+
+    var imageUrl = googlechart.getChartUrl(chartData);
   }
 
   function initMoviesTab() {
