@@ -37,23 +37,46 @@ var googlechart = {};
     finalUrl.push('chco=');
     finalUrl.push(colors.join(',')); 
      
-    // labels
-    var labels = [];
-    for (var i=0;i<chart.data.length ;i++ ) {
-      labels.push(chart.data[i].label);
-    }
-    finalUrl.push('&amp;');
-    finalUrl.push('chl=');
-    finalUrl.push(encodeURI(labels.join('|')));          
-    
     // data
-    var data = [];
-    for (var i=0;i<chart.data.length ;i++ ) {
-      data.push(chart.data[i].percent);
+    var chartData = {};
+    var totalCount = chart.items.length;
+
+    for (var i=0;i<chart.items.length ;i++ ) {
+      
+      var item = chart.items[i];
+      var itemName = item.name;
+
+     
+      if (itemName == undefined) {      
+        var data = {};
+        data.id = itemName;
+        data.label = item.label;
+        data.count = 1;
+        chartData[id] = data;
+      } else {
+        var data = chartData[itemName];
+        data.count++;
+      }                  
     }
+
+    console.log(chartData);
+
+    var percentData = [];
+    var labelData = [];
+
+    for (data in chartData) {
+      data.percent = ((data.count / totalCount) * 100).toFixed(2);
+      percentData.push(data.percent);
+      labelData.push(data.label);
+    }
+
     finalUrl.push('&amp;'); 
     finalUrl.push('chd=t:');
-    finalUrl.push(data.join(','));
+    finalUrl.push(percentData.join(','));
+
+    finalUrl.push('&amp;');
+    finalUrl.push('chl=');
+    finalUrl.push(encodeURI(labelData.join('|')));          
 
     return finalUrl.join('');
   }
