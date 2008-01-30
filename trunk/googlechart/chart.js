@@ -41,6 +41,8 @@ var googlechart = {};
     var chartData = {};
     var totalCount = chart.items.length;
 
+    console.log(chart);
+
     for (var i=0;i<chart.items.length ;i++ ) {
       
       var item = chart.items[i];
@@ -58,6 +60,8 @@ var googlechart = {};
         data.count++;
       }                  
     }
+
+    console.log(chartData);
 
     var percentData = [];
     var labelData = [];
