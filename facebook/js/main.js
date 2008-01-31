@@ -63,10 +63,20 @@
 
   function getFQL() {
     
-    var fql = 'SELECT name,pic from user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
+    var fql = 'SELECT name,pic,birthday FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
 
     api.fql_query(fql, function(result, exception) {
-      console.log(result);
+
+      for (var i=0; i<result.length; i++) {
+        var friend = result[i];
+
+        var name = friend.name;
+        var birthday = friend.birthday;
+
+        display(name);
+        display(birthday);
+      }
+
     });
   }
 
