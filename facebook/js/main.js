@@ -152,7 +152,7 @@
   }
 
   function getPhotos() {
-    api.photos_get('=2541844', null, null, function(photos, exception) {
+    api.photos_get('2541844', null, null, function(photos, exception) {
       for (var i = 0; i < photos.length; i++) {
         var photo = photos[i];
         var src = photo.src_big;
