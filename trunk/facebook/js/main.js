@@ -6,6 +6,7 @@
   });
   
   var api = null;
+  var myId = null;
 
   function main() {  
   
@@ -14,7 +15,7 @@
     
     api.requireLogin(function(exception) {
 
-      var myId = api.get_session().uid;
+      myId = api.get_session().uid;
 
       display('my id: ' + myId);    
 
@@ -62,7 +63,7 @@
 
   function getFQL() {
     
-    var fql = 'SELECT name, pic FROM user';
+    var fql = 'SELECT name,pic from user WHERE uid IN (SELECT uid2 FROM friend WHERE uid=' + myId + ')';
 
     api.fql_query(fql, function(result, exception) {
       console.log(result);
