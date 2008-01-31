@@ -10,7 +10,7 @@
 
   function main() {  
  
-    $('#info').draggable();
+    jQuery('#info').draggable();
 
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
         '/svn/trunk/facebook/js/xd_receiver.htm', null);
