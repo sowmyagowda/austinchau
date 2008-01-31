@@ -66,7 +66,7 @@
     var uid = friend.uid;
 
     var friendDiv = jQuery('<div />');
-    friendDiv.html(name);
+    friendDiv.html(friendDiv);
 
     friendDiv.click(function() {
       var fql = 'SELECT birthday FROM user WHERE uid=' + uid;      
