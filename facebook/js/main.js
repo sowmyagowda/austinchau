@@ -77,7 +77,20 @@
     friendDiv.click(function() {
       var fql = 'SELECT birthday,pic,pic_big FROM user WHERE uid=' + uid;      
       api.fql_query(fql, function(result, exception) {
-        console.log(result);
+        var birthday = null;
+        var pic = null;
+        
+        if (result.length > 0) {
+
+          jQuery('#info').empty();
+          birthday = result[0].birthday;
+          pic = result[0].pic_big;
+          
+          jQuery('#info').append('<img src="' + pic + '"><br>');
+          jQuery('#info').append(name + '<br>');          
+          jQuery('#info').append(birthday + '<br>');
+        }
+
       });
     });
   }
