@@ -72,7 +72,7 @@
       var fql = 'SELECT birthday FROM user WHERE uid=' + uid;      
       api.fql_query(fql, function(result, exception) {i
         console.log(result);
-      }
+      });
     });
 
     display(friendDiv);
