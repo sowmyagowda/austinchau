@@ -67,6 +67,10 @@
 
     var friendDiv = jQuery('<div />');
     friendDiv.html(friendDiv);
+    
+    jQuery('#display').append(friendDiv);
+    jQuery('#display').append('<br>');
+
 
     friendDiv.click(function() {
       var fql = 'SELECT birthday FROM user WHERE uid=' + uid;      
@@ -74,8 +78,6 @@
         console.log(result);
       });
     });
-
-    display(friendDiv);
   }
 
   function getFQL() {
