@@ -1,8 +1,12 @@
 (function() {
   jQuery(document).ready(function() {
+
+    /*
     jQuery.getScript(
         'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
         main);   
+    */
+    main();
   });
   
   var api = null;
