@@ -19,7 +19,6 @@ var googlechart = {};
       newKind.id = name;
       newKind.count = 1;
       this.dataMap[name] = newKind;
-      this.dataMap[label] = label;
       this.dataMapTotal++;
     }
   }
