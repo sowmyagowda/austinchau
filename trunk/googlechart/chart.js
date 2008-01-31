@@ -74,7 +74,7 @@ var googlechart = {};
     // title
     finalUrl.push('&amp;');
     finalUrl.push('chtt=');
-    finalUrl.push(encodeURIComponent(chart.title + ' (Total: ' + this.dataMapTotal + ')'));
+    finalUrl.push(encodeURIComponent(chart.title);
 
     return finalUrl.join('');
 
