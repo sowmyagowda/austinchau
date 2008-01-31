@@ -1,5 +1,82 @@
 var googlechart = {};
 
+  googlechart.Chart = function(type, width, height, color) {
+    this.baseUrl = 'http://chart.apis.google.com/chart?';
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+
+    this.dataMap = {};
+    this.dataMapTotal = 0;
+  }
+
+  googlechart.Chart.prototype.addData = function(name, label) {
+    if (name in dataMap) {
+      dataMap[name].count++;
+    } else {
+      var newKind = {};
+      newKind.id = name;
+      newKind.count = 1;
+      dataMap[name] = newKind;
+      dataMap[label] = label;
+      this.dataMapTotal++;
+    }
+  }
+
+  googlechart.Chart.prototype.getChartUrl = function() {
+
+    var finalUrl = [];
+
+    finalUrl.push(this.baseUrl);
+
+    // chart type
+    finalUrl.push('cht=');
+    finalUrl.push(this.type); 
+
+    // dimension
+    finalUrl.push('&amp;');
+    finalUrl.push('chs=');
+    finalUrl.push(this.width);
+    finalUrl.push('x');
+    finalUrl.push(this.height);
+    
+    // colors
+    var colors = [];
+    if (this.color) {
+      colors.push(this.color);
+    }
+    finalUrl.push('&amp;');
+    finalUrl.push('chco=');
+    finalUrl.push(colors.join(',')); 
+    
+    var percentData = [];
+    var labelData = [];
+
+    for (id in this.dataMap) {
+      var data = dataMap[id];
+      data.percent = ((data.count / dataMapTotal) * 100).toFixed(2);
+      percentData.push(data.percent);
+      labelData.push(data.label + ' ' + data.percent + '%');
+    }
+
+    finalUrl.push('&amp;'); 
+    finalUrl.push('chd=t:');
+    finalUrl.push(percentData.join(','));
+
+    finalUrl.push('&amp;');
+    finalUrl.push('chl=');
+    finalUrl.push(encodeURI(labelData.join('|')));          
+    
+    // title
+    finalUrl.push('&amp;');
+    finalUrl.push('chtt=');
+    finalUrl.push(encodeURIComponent(chart.title + ' (Total: ' + totalCount + ')'));
+
+    return finalUrl.join('');
+
+  }
+
   googlechart.getChartUrl = function(chart) {
 
     var baseUrl = 'http://chart.apis.google.com/chart?';
