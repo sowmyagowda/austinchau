@@ -43,6 +43,11 @@
       
         getPhotos();
       });
+      
+      jQuery('#fql').click(function() {
+      
+        getFQL();
+      });
 
       jQuery('#test').click(function() {
         test();
@@ -53,6 +58,15 @@
 
   function clear() {
     jQuery('#display').empty();
+  }
+
+  function getFQL() {
+    
+    var fql = 'SELECT name, pic FROM user';
+
+    api.fql_query(fql, function(result, exception) {
+      console.log(result);
+    });
   }
 
   function test() {
