@@ -61,20 +61,32 @@
     jQuery('#display').empty();
   }
 
+  function displayFriend(friend) {
+    var name = friend.name;
+    var uid = friend.uid;
+
+    var friendDiv = jQuery('<div />');
+    friendDiv.html(name);
+
+    friendDiv.click(function() {
+      var fql = 'SELECT birthday FROM user WHERE uid=' + uid;      
+      api.fql_query(fql, function(result, exception) {i
+        console.log(result);
+      }
+    });
+
+    display(friendDiv);
+  }
+
   function getFQL() {
     
-    var fql = 'SELECT name,pic,birthday FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
+    var fql = 'SELECT name,pic_small,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
 
     api.fql_query(fql, function(result, exception) {
 
       for (var i=0; i<result.length; i++) {
         var friend = result[i];
-
-        var name = friend.name;
-        var birthday = friend.birthday;
-
-        display(name);
-        display(birthday);
+        displayFriend(friend);
       }
 
     });
