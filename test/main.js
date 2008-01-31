@@ -116,7 +116,7 @@
       
     });
 
-    var pieChart = new googlechart.Chart();
+    var pieChart = new googlechart.Chart('p',1000,300, '333333');
     pieChart.addData('May', 'May');
     pieChart.addData('June', 'June');
     pieChart.addData('May', 'May');

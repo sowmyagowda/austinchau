@@ -15,10 +15,11 @@ var googlechart = {};
     if (name in this.dataMap) {
       this.dataMap[name].count++;
     } else {
-      var newKind = {};
-      newKind.id = name;
-      newKind.count = 1;
-      this.dataMap[name] = newKind;
+      var newData = {};
+      newData.id = name;
+      newData.label = label;
+      newData.count = 1;
+      this.dataMap[name] = newData;
       this.dataMapTotal++;
     }
   }
