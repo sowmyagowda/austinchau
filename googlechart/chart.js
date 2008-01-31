@@ -13,13 +13,13 @@ var googlechart = {};
 
   googlechart.Chart.prototype.addData = function(name, label) {
     if (name in this.dataMap) {
-      dataMap[name].count++;
+      this.dataMap[name].count++;
     } else {
       var newKind = {};
       newKind.id = name;
       newKind.count = 1;
-      dataMap[name] = newKind;
-      dataMap[label] = label;
+      this.dataMap[name] = newKind;
+      this.dataMap[label] = label;
       this.dataMapTotal++;
     }
   }
