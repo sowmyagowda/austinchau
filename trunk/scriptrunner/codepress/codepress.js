@@ -38,7 +38,7 @@ CodePress = function(obj) {
     
     //callback
     var actionId = self.textarea.id.substr(0, self.textarea.id.length - 14);
-    jsguide.calendar.initContent(actionId);  
+    //jsguide.calendar.initContent(actionId);  
 	}
 	
 	// obj can by a textarea id or a string (code)
