@@ -1,8 +1,9 @@
 var googlechart = {};
 
-  googlechart.Chart = function(type, width, height, color) {
+  googlechart.Chart = function(type, title, width, height, color) {
     this.baseUrl = 'http://chart.apis.google.com/chart?';
     this.type = type;
+    this.title = title;
     this.width = width;
     this.height = height;
     this.color = color;
@@ -20,8 +21,10 @@ var googlechart = {};
       newData.label = label;
       newData.count = 1;
       this.dataMap[name] = newData;
-      this.dataMapTotal++;
     }
+    
+    this.dataMapTotal++;
+    
   }
 
   googlechart.Chart.prototype.getChartUrl = function() {
