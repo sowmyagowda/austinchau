@@ -115,30 +115,13 @@
     $('#chart').click(function() {
       
     });
-    
-    var chartData = {};
-    chartData.type = 'p';
-    chartData.width = '1000';
-    chartData.height = '300';
-    chartData.title = 'test chart';
-    chartData.color = '333333';
 
-    chartData.items = [
-      {
-        name: 'May',
-        label: 'May birthday'
-      },
-      {
-        name: 'May',
-        label: 'May birthday'
-      },
-      {
-        name: 'June',
-        label: 'June birthday'
-      }
-    ];
+    var pieChart = new googlechart.Chart();
+    pieChart.add('May', 'May');
+    pieChart.add('June', 'June');
+    pieChart.add('May', 'May');
 
-    var imageUrl = googlechart.getChartUrl(chartData);
+    var imageUrl = pieChart.getChartUrl();
     console.log(imageUrl);
 
     $('#chartdisplay').append('<img src="' + imageUrl + '"><br>');
