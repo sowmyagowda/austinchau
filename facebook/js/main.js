@@ -68,9 +68,10 @@
     var friendDiv = jQuery('<div></div>');
     
     friendDiv.append(name);
+    friendDiv.append('<br>');
+    friendDiv.append(uid);
 
     jQuery('#display').append(friendDiv);
-    jQuery('#display').append('<br>');
 
 
     friendDiv.click(function() {
