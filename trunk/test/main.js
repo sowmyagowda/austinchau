@@ -122,7 +122,6 @@
     pieChart.addData('May', 'May');
 
     var imageUrl = pieChart.getChartUrl();
-    console.log(imageUrl);
 
     $('#chartdisplay').append('<img src="' + imageUrl + '"><br>');
   }
@@ -235,26 +234,14 @@
 
   function displayChart(events) {
 
-    var totalEvents = 0;
-
-    for (author in events) {
-      totalEvents += events[author];
-    }    
-
-    var chart = {};
-    chart.width = 1000;
-    chart.height = 300;
-    chart.title = 'total events: ' + totalEvents;
-    chart.color = '6633FF';
+    var piechart = new googlechart.Chart('p', 'Total Events', 1000, 300, '6633FF');
     
-    chart.data = [];
     for (author in events) {
-      var percent = ((events[author] / totalEvents) * 100).toFixed(2);
-      var label = [author, ' (', events[author], ') - ', percent, '%'].join('');
-      chart.data.push({percent: percent, label: label});      
+      var author += events[author];
+      pieChart.addData(author, author);
     }    
   
-    var chartUrl = googlechart.createPieChart(chart);
+    var chartUrl = pieChart.getChartUrl();
     var image = '<img src="' + chartUrl + '">';
 
     $('#chart').empty();
