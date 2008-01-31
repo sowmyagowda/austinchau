@@ -117,9 +117,9 @@
     });
 
     var pieChart = new googlechart.Chart();
-    pieChart.add('May', 'May');
-    pieChart.add('June', 'June');
-    pieChart.add('May', 'May');
+    pieChart.addData('May', 'May');
+    pieChart.addData('June', 'June');
+    pieChart.addData('May', 'May');
 
     var imageUrl = pieChart.getChartUrl();
     console.log(imageUrl);
