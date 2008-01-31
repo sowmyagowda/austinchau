@@ -236,8 +236,8 @@
 
     var piechart = new googlechart.Chart('p', 'Total Events', 1000, 300, '6633FF');
     
-    for (author in events) {
-      var author += events[author];
+    for (var author in events) {
+      var author = events[author];
       pieChart.addData(author, author);
     }    
   
