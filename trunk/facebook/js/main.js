@@ -72,10 +72,10 @@
     friendDiv.append(uid);
 
     jQuery('#display').append(friendDiv);
-
+    jQuery('#display').append('<br>');
 
     friendDiv.click(function() {
-      var fql = 'SELECT birthday FROM user WHERE uid=' + uid;      
+      var fql = 'SELECT * FROM user WHERE uid=' + uid;      
       api.fql_query(fql, function(result, exception) {
         console.log(result);
       });
