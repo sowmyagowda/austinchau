@@ -234,7 +234,7 @@
 
   function displayChart(events) {
 
-    var piechart = new googlechart.Chart('p', 'Total Events', 1000, 300, '6633FF');
+    var pieChart = new googlechart.Chart('p', 'Total Events', 1000, 300, '6633FF');
     
     for (var author in events) {
       var author = events[author];
