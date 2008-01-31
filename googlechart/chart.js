@@ -54,7 +54,7 @@ var googlechart = {};
     var labelData = [];
 
     for (var id in this.dataMap) {
-      var data = dataMap[id];
+      var data = this.dataMap[id];
       data.percent = ((data.count / dataMapTotal) * 100).toFixed(2);
       percentData.push(data.percent);
       labelData.push(data.label + ' ' + data.percent + '%');
