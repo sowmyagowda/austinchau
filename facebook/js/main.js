@@ -120,17 +120,6 @@
 
         var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
 
-        var chart = {};
-        chart.width = 1000;
-        chart.height = 300;
-        chart.title = 'birthday';
-        chart.color = '6633FF';
-
-        chart.data = [];
-
-        var months = {};
-        months['N/A'] = 0;
-
         var chartData = [];
         chartData.type = 'p';
         chartData.width = '1000';
@@ -180,11 +169,8 @@
           display('<br />');
         }
 
-
         var chartUrl = googlechart.getChartUrl(chartData);
-
         jQuery('<img src="' + chartUrl  + '">').appendTo('#display');
-
         display('<br />');
       });
 
