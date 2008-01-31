@@ -12,7 +12,7 @@ var googlechart = {};
   }
 
   googlechart.Chart.prototype.addData = function(name, label) {
-    if (name in dataMap) {
+    if (name in this.dataMap) {
       dataMap[name].count++;
     } else {
       var newKind = {};
@@ -53,7 +53,7 @@ var googlechart = {};
     var percentData = [];
     var labelData = [];
 
-    for (id in this.dataMap) {
+    for (var id in this.dataMap) {
       var data = dataMap[id];
       data.percent = ((data.count / dataMapTotal) * 100).toFixed(2);
       percentData.push(data.percent);
