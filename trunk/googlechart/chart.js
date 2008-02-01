@@ -1,4 +1,4 @@
-var googlechart = {};
+  var googlechart = {};
 
   googlechart.Chart = function(type, title, width, height, color) {
     this.baseUrl = 'http://chart.apis.google.com/chart?';
