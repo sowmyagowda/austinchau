@@ -4,16 +4,17 @@
 </head>
 <script src='http://code.google.com/js/jquery.js'
 type='text/javascript'></script>
+<script src='http://code.google.com/js/jquery.js'
+type='text/javascript'></script>
 <script type='text/javascript'>
-$(document).ready(function() {
-  $('#innerclick').click(function() {
-    window.location = window.location + '#helloaustin';
 
-    console.log(parent.location);    
-  });
-});
-        </script>
-        <body>
-        <input id=innerclick type=button value=innerclick>
-        </body>
-        </html>
+window.onload = function() {
+  insertIframe('b', 'about:blank', 200, 100);
+}
+
+
+</script>
+<body>
+<input id=innerclick type=button value=innerclick>
+</body>
+</html>
