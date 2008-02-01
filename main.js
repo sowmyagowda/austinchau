@@ -10,7 +10,7 @@
       iframe.src = url; //'about:blank';
       document.body.appendChild(iframe);
     }
-
+/*
     if (iframe) {
       var iframeDoc;
       if (iframe.contentDocument) {
@@ -27,6 +27,6 @@
         iframeDoc.close();
       }
     }
-
+*/
     return iframe;
   }
