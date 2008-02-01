@@ -7,9 +7,11 @@ type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
   $('#innerclick').click(function() {
-      console.log(parent.location);    
-        });
-        });
+    window.location = window.location + '#helloaustin';
+
+    console.log(parent.location);    
+  });
+});
         </script>
         <body>
         <input id=innerclick type=button value=innerclick>
