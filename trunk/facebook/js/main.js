@@ -236,6 +236,9 @@
 
   function getAllFriends() {
     clear();
+
+    var sequencer = new FB.BatchSequencer();
+
     api.friends_get(function(result, exception) {
 
       for (var i=0; i<result.length ;i++ ) {
@@ -243,7 +246,7 @@
         display(friendId);
       }
 
-    });
+    }, sequencer);
   }
 
   function getAppUsers() {
