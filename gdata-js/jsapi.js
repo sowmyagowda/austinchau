@@ -40,15 +40,13 @@
     if (hasCalendarToken()) {
       enableButtons(true);
       $('#login').val('logout');
-      setDisplay(
-          'token = ' +
+      setDisplay('token = ' +
           google.accounts.user.checkLogin(SCOPE_URL));
+      $('#privaterun').trigger('click');
     } else {
       enableButtons(false);
       $('#login').val('login');
       setDisplay('no token');
-
-      $('#privaterun').trigger('click');
     }
 
 
