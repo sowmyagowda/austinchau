@@ -1,4 +1,4 @@
-
+(function() {
   var SCOPE_URL = 'http://www.google.com/calendar/feeds/';
   var PRIVATE_FEED = 'http://www.google.com/calendar/feeds/default/private/full';
 
@@ -29,8 +29,15 @@
       }
     });
 
-    if (hasCalendarToken()) {
+    $('#privaterun').click(function() {
+      getAllEvents(PRIVATE_FEED);
+    });
 
+    $('#publicrun').click(function() {
+      getAllEvents(PUBLIC_FEED);
+    });
+
+    if (hasCalendarToken()) {
       enableButtons(true);
       $('#login').val('logout');
       setDisplay(
@@ -40,15 +47,11 @@
       enableButtons(false);
       $('#login').val('login');
       setDisplay('no token');
+
+      $('#privaterun').trigger('click');
     }
 
-    $('#privaterun').click(function() {
-      getAllEvents(PRIVATE_FEED);
-    });
 
-    $('#publicrun').click(function() {
-      getAllEvents(PUBLIC_FEED);
-    });
 
   }  
 
@@ -119,3 +122,4 @@
     //alert(;
   }
 
+})();
