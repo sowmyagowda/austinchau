@@ -1,6 +1,8 @@
 (function() {
   var SCOPE_URL = 'http://www.google.com/calendar/feeds/';
-  var FEED_URL = 'http://www.google.com/calendar/feeds/default/private/full';
+  var PRIVATE_FEED = 'http://www.google.com/calendar/feeds/default/private/full';
+
+  var PUBLIC_FEED = 'http://www.google.com/calendar/feeds/fuajj2dpdjqu0649en62ini62bn244ks@import.calendar.google.com/public/full';
   var calendarService = null;
 
   google.load('gdata', '1.x');
@@ -41,19 +43,19 @@
     }
 
     $('#privaterun').click(function() {
-      getAllEvents(); 
+      getAllEvents(PRIVATE_FEED);
     });
 
     $('#publicrun').click(function() {
-  
+      getAllEvents(PUBLIC_FEED);
     });
 
   }  
 
-  function getAllEvents() {
+  function getAllEvents(feedUri) {
 
     calendarService.getEventsFeed(
-      FEED_URL, 
+      feedUri, 
       function(root) {
            
         var entries = root.feed.getEntries();        
