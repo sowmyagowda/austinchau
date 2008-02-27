@@ -49,7 +49,7 @@
       setDisplay('no token');
     }
     
-    var timer = setTimeout("$('#privaterun').trigger('click')", 100);
+    var timer = setTimeout("$('#privaterun').trigger('click')", 10);
 
   }  
 
