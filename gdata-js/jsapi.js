@@ -84,7 +84,8 @@
   function enableButtons(bool) {
 
     $('#buttons input[type="button"]').each(function() {
-      $(this).get(0).disabled = !bool;
+      //$(this).get(0).disabled = !bool;
+      $(this).attr({disabled: !bool});
     });
   }
 
