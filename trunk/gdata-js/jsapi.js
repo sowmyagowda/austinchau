@@ -29,26 +29,26 @@
 
     if (hasCalendarToken()) {
 
-      setEnabledRun(true);
+      enableButtons(true);
       $('#login').val('logout');
       setDisplay(
           'token = ' +
           google.accounts.user.checkLogin(SCOPE_URL));
     } else {
-      setEnabledRun(false);
+      enableButtons(false);
       $('#login').val('login');
       setDisplay('no token');
     }
 
-    $('#run').click(function() {
-      run();   
+    $('#privaterun').click(function() {
+      getAllEvents(); 
+    });
+
+    $('#publicrun').click(function() {
+  
     });
 
   }  
-
-  function run() {
-    getAllEvents();
-  }
 
   function getAllEvents() {
 
@@ -67,8 +67,6 @@
           var eventLocation = entry.getLocations()[0].getValueString();
           output.push('title = ' + eventTitle);
           output.push('<br>');
-          output.push('location = ' + eventLocation);
-          output.push('<br>');
 
         }    
         output = output.join('');
@@ -83,8 +81,11 @@
   }
 
 
-  function setEnabledRun(bool) {
-    $('#run').get(0).disabled = !bool;
+  function enableButtons(bool) {
+
+    $('#buttons input[type="button"]').each(function() {
+      $(this).get(0).disabled = !bool;
+    });
   }
 
   function hasCalendarToken() {
