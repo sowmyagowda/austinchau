@@ -42,7 +42,7 @@
       $('#login').val('logout');
       setDisplay('token = ' +
           google.accounts.user.checkLogin(SCOPE_URL));
-      $('#privaterun').trigger('click');
+      $('#publicrun').trigger('click');
     } else {
       enableButtons(false);
       $('#login').val('login');
