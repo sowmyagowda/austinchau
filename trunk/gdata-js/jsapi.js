@@ -49,7 +49,7 @@
       setDisplay('no token');
     }
 
-      $('#publicrun').trigger('click');
+    //$('#privaterun').trigger('click');
 
   }  
 
