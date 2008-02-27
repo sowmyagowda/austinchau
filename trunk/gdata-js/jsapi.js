@@ -63,8 +63,6 @@
         for (var i=0;i<entries.length ;i++ ) {
           var entry = entries[i];
 
-          inspectObject(entry.getLocations());
-
           var eventTitle = entry.getTitle().getText();
           var eventLocation = entry.getLocations()[0].getValueString();
           output.push('title = ' + eventTitle);
