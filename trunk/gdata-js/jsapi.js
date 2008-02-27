@@ -21,7 +21,7 @@
       if (hasCalendarToken()) {
         google.accounts.user.logout();
         $('#login').val('login');
-        setEnabledRun(false);
+        enableButtons(false);
       } else {
         google.accounts.user.login(SCOPE_URL);
       }
