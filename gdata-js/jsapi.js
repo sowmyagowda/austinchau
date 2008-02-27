@@ -42,14 +42,14 @@
       $('#login').val('logout');
       setDisplay('token = ' +
           google.accounts.user.checkLogin(SCOPE_URL));
-      $('#publicrun').trigger('click');
+
     } else {
       enableButtons(false);
       $('#login').val('login');
       setDisplay('no token');
     }
 
-
+      $('#publicrun').trigger('click');
 
   }  
 
