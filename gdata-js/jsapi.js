@@ -1,4 +1,4 @@
-(function() {
+
   var SCOPE_URL = 'http://www.google.com/calendar/feeds/';
   var PRIVATE_FEED = 'http://www.google.com/calendar/feeds/default/private/full';
 
@@ -119,4 +119,3 @@
     //alert(;
   }
 
-})();
