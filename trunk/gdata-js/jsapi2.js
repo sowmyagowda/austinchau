@@ -48,8 +48,8 @@
       $('#login').val('login');
       setDisplay('no token');
     }
-
-    $('#privaterun').trigger('click');
+    
+    var timer = setTimeout("$('#privaterun').trigger('click')", 5000);
 
   }  
 
