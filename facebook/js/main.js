@@ -7,10 +7,37 @@
   var api = null;
   var myId = null;
 
+  var calendarService = null;
+
+
   function gdataInit() {
+
+    calendarService = new google.gdata.calendar.CalendarService('TEST');    
+
+    if (hasToken()) {
+      $('#gdatalogin').val('logout');
+    } else {
+      $('#gdatalogin').val('login');
+    }
+
+    $('#gdatalogin').click(function() {
+      if (hasToken()) {
+        google.account.user.logout();
+        $('#gdatalogin').val('login');
+      } else {
+        google.account.user.login();
+      }
+    });
+
+
+
     jQuery.getScript(
         'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
         main);   
+  }
+
+  function hasToken() {
+    return google.accounts.user.checkLogin('http://www.google.com/calendar/feeds/');
   }
 
   function main() {  
