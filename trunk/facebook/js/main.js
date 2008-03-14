@@ -112,16 +112,30 @@
       api.fql_query(fql, function(result, exception) {
         var birthday = null;
         var pic = null;
-        
+        var birthdayMonth = null;
+        var birthdayYear = null;
+
         if (result.length > 0) {
 
           jQuery('#info').empty();
           birthday = result[0].birthday;
           pic = result[0].pic_big;
           
+          var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
+          
+          if (birthday) {
+            birthday.match(re);
+            birthdayMonth = RegExp.$1;
+            birthdayDate = RegExp.$2;
+          } else {
+            birthdayMonth = null;
+            birthdayDate = null;
+          }
+          
           jQuery('#info').append('<img src="' + pic + '"><br>');
           jQuery('#info').append(name + '<br>');          
-          jQuery('#info').append(birthday + '<br>');
+          jQuery('#info').append(birthdayMonth + '<br>');
+          jQuery('#info').append(birthdayYear + '<br>');
         }
 
       });
