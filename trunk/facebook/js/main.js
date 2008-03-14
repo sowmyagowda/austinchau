@@ -1,24 +1,19 @@
 (function() {
-  jQuery(document).ready(function() {
-    jQuery.getScript(
-        'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
-        main);   
-  });
+  
+  google.loader.ApiKey = '';  
+  google.load('gdata', '1.x');
+  google.setOnLoadCallback(gdataInit);
   
   var api = null;
   var myId = null;
 
-
   function gdataInit() {
-    
+    jQuery.getScript(
+        'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
+        main);   
   }
 
   function main() {  
-
-    google.loader.ApiKey = '';  
-    google.load('gdata', '1.x');
-    google.setOnLoadCallback(gdataInit());
-
 
     jQuery('#info').draggable();
 
