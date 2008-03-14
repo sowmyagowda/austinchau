@@ -21,10 +21,10 @@
 
     $('#gdatalogin').click(function() {
       if (hasToken()) {
-        google.account.user.logout();
+        google.accounts.user.logout();
         $('#gdatalogin').val('login');
       } else {
-        google.account.user.login();
+        google.accounts.user.login('http://www.google.com/calendar/feeds/');
       }
     });
 
