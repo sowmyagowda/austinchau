@@ -8,8 +8,18 @@
   var api = null;
   var myId = null;
 
+
+  function gdataInit() {
+    
+  }
+
   function main() {  
- 
+
+    google.loader.ApiKey = '';  
+    google.load('gdata', '1.x');
+    google.setOnLoadCallback(gdataInit());
+
+
     jQuery('#info').draggable();
 
     api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
