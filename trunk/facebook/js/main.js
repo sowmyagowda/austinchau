@@ -1,6 +1,7 @@
 (function() {
   
-  google.loader.ApiKey = '';  
+  google.loader.ApiKey =
+  'ABQIAAAArM7h3NX7hYkBySUFFdiEOhQRf2STcHXVuVmvt6wOtbdr4-n7NRTCVvmdDn_PrkyH8xOtGUESVEsrhA';
   google.load('gdata', '1.x');
   google.setOnLoadCallback(gdataInit);
   
