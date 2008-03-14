@@ -113,7 +113,7 @@
         var birthday = null;
         var pic = null;
         var birthdayMonth = null;
-        var birthdayYear = null;
+        var birthdayDate = null;
 
         if (result.length > 0) {
 
@@ -135,7 +135,7 @@
           jQuery('#info').append('<img src="' + pic + '"><br>');
           jQuery('#info').append(name + '<br>');          
           jQuery('#info').append(birthdayMonth + '<br>');
-          jQuery('#info').append(birthdayYear + '<br>');
+          jQuery('#info').append(birthdayDate + '<br>');
         }
 
       });
