@@ -4,12 +4,14 @@
   google.setOnLoadCallback(gdataInit);
   
   var api = null;
-  var myId = null;
+  var facebookId = '88f61278db03559135c4b95c95c2a2aa';
 
   var calendarService = null;
 
-  var MONTHS = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July',
-  'August', 'September',
+  var MONTHS = [
+  'January', 'Feburary', 'March', 
+  'April', 'May', 'June', 
+  'July', 'August', 'September',
   'October', 'November', 'December'];
   
   function gdataInit() {
@@ -17,21 +19,19 @@
     calendarService = new google.gdata.calendar.CalendarService('TEST');    
 
     if (hasToken()) {
-      jQuery('#gdatalogin').val('logout');
+      jQuery('#gdatalogin').val('gcal logout');
     } else {
-      jQuery('#gdatalogin').val('login');
+      jQuery('#gdatalogin').val('gcal login');
     }
 
     jQuery('#gdatalogin').click(function() {
       if (hasToken()) {
         google.accounts.user.logout();
-        jQuery('#gdatalogin').val('login');
+        jQuery('#gdatalogin').val('gcal login');
       } else {
         google.accounts.user.login('http://www.google.com/calendar/feeds/');
       }
     });
-
-
 
     jQuery.getScript(
         'http://static.ak.facebook.com/js/api_lib/FacebookApi.debug.js', 
@@ -46,14 +46,12 @@
 
     jQuery('#info').draggable();
 
-    api = new FB.ApiClient('88f61278db03559135c4b95c95c2a2aa', 
+    api = new FB.ApiClient(facebookId, 
         '/svn/trunk/facebook/js/xd_receiver.htm', null);
     
     api.requireLogin(function(exception) {
 
       myId = api.get_session().uid;
-
-      display('my id: ' + myId);    
 
       jQuery('#clear').click(function() {
         clear();
@@ -82,7 +80,6 @@
       });
       
       jQuery('#fql').click(function() {
-      
         getFQL();
       });
 
@@ -97,6 +94,20 @@
     jQuery('#display').empty();
   }
 
+  function getFQL() {
+    
+    var fql = 'SELECT name,pic_small,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
+
+    api.fql_query(fql, function(result, exception) {
+
+      for (var i=0; i<result.length; i++) {
+        var friend = result[i];
+        displayFriend(friend);
+      }
+
+    });
+  }
+
   function displayFriend(friend) {
     var name = friend.name;
     var uid = friend.uid;
@@ -104,11 +115,8 @@
     var friendDiv = jQuery('<div></div>');
     
     friendDiv.append(name);
-    friendDiv.append('<br>');
-    //friendDiv.append(uid);
 
     jQuery('#display').append(friendDiv);
-    jQuery('#display').append('<br>');
 
     friendDiv.click(function() {
       var fql = 'SELECT birthday,pic,pic_big FROM user WHERE uid=' + uid;      
@@ -187,7 +195,7 @@
     wc.width = 300;
     wc.setUrl(pic);
 
-    var wcl = google.gdata.calendar.CalendarLink.create(wc, pic, 'image/*');
+    var wcl = google.gdata.calendar.CalendarLink.create(wc, pic, title, 'image/*');
 
     entry.setWebContentLink(wcl);
 
@@ -203,20 +211,6 @@
     calendarService.insertEntry(feedUri, entry, callback, 
         handleError, google.gdata.calendar.CalendarEventEntry);
 
-  }
-
-  function getFQL() {
-    
-    var fql = 'SELECT name,pic_small,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
-
-    api.fql_query(fql, function(result, exception) {
-
-      for (var i=0; i<result.length; i++) {
-        var friend = result[i];
-        displayFriend(friend);
-      }
-
-    });
   }
 
   function test() {
