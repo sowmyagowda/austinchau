@@ -148,7 +148,7 @@
               var now = new Date();
               var dateObject = new Date(now.getFullYear(),
                   MONTHS.indexOf(birthdayMonth), birthdayDate);            
-              createEvent(name + '\'s birthday', dateObject);
+              createEvent(name + '\'s birthday', dateObject, pic);
             });            
 
             jQuery('#info').append('<br>');
@@ -162,7 +162,7 @@
     });
   }
 
-  function createEvent(title, d) {
+  function createEvent(title, d, pic) {
     
     var feedUri = 'http://www.google.com/calendar/feeds/default/private/full';
 
@@ -181,6 +181,16 @@
     when.setEndTime(endTime);
 
     entry.addTime(when);
+
+    var wc = new google.gdata.calendar.WebContent();
+    wc.height = 300;
+    wc.width = 300;
+    wc.setUrl(pic);
+
+    var wcl = google.gdata.calendar.WebContentLink.create(wc, pic, 'image/*');
+
+    entry.setWebContentLink(wcl);
+
 
     var callback = function(result) {
       alert('event created!');
