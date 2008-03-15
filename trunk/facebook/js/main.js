@@ -144,7 +144,7 @@
             var now = new Date();
             var dateObject = new Date(now.getFullYear(),
                 MONTHS.indexOf(birthdayMonth), birthdayDate);            
-
+            createEvent(name + '\'s birthday', dateObject);
             jQuery('#info').append(dateObject.toString());
           }
 
@@ -153,6 +153,36 @@
 
       });
     });
+  }
+
+  function createEvent(title, date) {
+    var feedUri = 'http://www.google.com/calendar/feeds/default/private/full';
+
+    var entry = new google.gdata.calendar.CalendarEventEntry();
+
+    entry.setTitle(google.gdata.Text.create(title));
+
+    var when = new google.gdata.When();
+
+    var startTime = new google.gdata.DateTime(date, true);
+    var oneday = 24 * 60 * 60 * 1000;
+    var endTime = new google.gdata.DateTime(new Date(date.getTime() + oneday));
+    when.setStartTime(startTime);
+    when.setEndTime(endTime);
+
+    entry.addTime(when);
+
+    var callback = function(result) {
+      alert('event created!');
+      }
+
+    var handleError = function(error) {
+      alert(error);
+    }
+
+    calendarService.insertEntry(feedUri, entry, callback, 
+        handleError, google.gdata.calendar.CalendarEventEntry);
+
   }
 
   function getFQL() {
