@@ -187,7 +187,7 @@
     wc.width = 300;
     wc.setUrl(pic);
 
-    var wcl = google.gdata.calendar.WebContentLink.create(wc, pic, 'image/*');
+    var wcl = google.gdata.calendar.CalendarLink.create(wc, pic, 'image/*');
 
     entry.setWebContentLink(wcl);
 
