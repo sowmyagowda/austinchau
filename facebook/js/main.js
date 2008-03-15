@@ -16,15 +16,15 @@
     calendarService = new google.gdata.calendar.CalendarService('TEST');    
 
     if (hasToken()) {
-      $('#gdatalogin').val('logout');
+      jQuery('#gdatalogin').val('logout');
     } else {
-      $('#gdatalogin').val('login');
+      jQuery('#gdatalogin').val('login');
     }
 
-    $('#gdatalogin').click(function() {
+    jQuery('#gdatalogin').click(function() {
       if (hasToken()) {
         google.accounts.user.logout();
-        $('#gdatalogin').val('login');
+        jQuery('#gdatalogin').val('login');
       } else {
         google.accounts.user.login('http://www.google.com/calendar/feeds/');
       }
@@ -144,7 +144,7 @@
             var dateObject = new Date(now.getFullYear(),
                 MONTHS.indexOf(birthdayMonth), birthdayDate);            
 
-            $('#info').append(dateObject.toString());
+            jQuery('#info').append(dateObject.toString());
           }
 
 
