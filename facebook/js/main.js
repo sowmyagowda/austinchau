@@ -155,9 +155,7 @@
     });
   }
 
-  function createEvent(title, date) {
-    
-    console.log(date);
+  function createEvent(title, d) {
     
     var feedUri = 'http://www.google.com/calendar/feeds/default/private/full';
 
@@ -167,10 +165,11 @@
 
     var when = new google.gdata.When();
 
-    var startTime = new google.gdata.DateTime(date, true);
+    var startTime = new google.gdata.DateTime(d, true);
     var oneday = 24 * 60 * 60 * 1000;
-    var endTime = new google.gdata.DateTime(new Date(date.getTime() + oneday),
-      true);
+    var d_ = new Date();
+    d_.setTime(d.getTime() + oneday);
+    var endTime = new google.gdata.DateTime(d_, true);
     when.setStartTime(startTime);
     when.setEndTime(endTime);
 
