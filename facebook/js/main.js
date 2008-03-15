@@ -156,6 +156,9 @@
   }
 
   function createEvent(title, date) {
+    
+    console.log(date);
+    
     var feedUri = 'http://www.google.com/calendar/feeds/default/private/full';
 
     var entry = new google.gdata.calendar.CalendarEventEntry();
@@ -166,7 +169,8 @@
 
     var startTime = new google.gdata.DateTime(date, true);
     var oneday = 24 * 60 * 60 * 1000;
-    var endTime = new google.gdata.DateTime(new Date(date.getTime() + oneday));
+    var endTime = new google.gdata.DateTime(new Date(date.getTime() + oneday),
+      true);
     when.setStartTime(startTime);
     when.setEndTime(endTime);
 
