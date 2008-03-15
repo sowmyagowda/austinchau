@@ -141,11 +141,19 @@
           jQuery('#info').append(birthdayDate + '<br>');
           
           if (birthdayMonth && birthdayDate) {
-            var now = new Date();
-            var dateObject = new Date(now.getFullYear(),
-                MONTHS.indexOf(birthdayMonth), birthdayDate);            
-            createEvent(name + '\'s birthday', dateObject);
+            
+            button = jQuery('<input type=button value=add>');
+
+            button.click(function() {
+              var now = new Date();
+              var dateObject = new Date(now.getFullYear(),
+                  MONTHS.indexOf(birthdayMonth), birthdayDate);            
+              createEvent(name + '\'s birthday', dateObject);
+            });            
+
             jQuery('#info').append(dateObject.toString());
+            jQuery('#info').append('<br>');
+            jQuery('#info').append(button);
           }
 
 
