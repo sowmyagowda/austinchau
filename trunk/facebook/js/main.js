@@ -151,7 +151,6 @@
               createEvent(name + '\'s birthday', dateObject);
             });            
 
-            jQuery('#info').append(dateObject.toString());
             jQuery('#info').append('<br>');
             jQuery('#info').append(button);
           }
