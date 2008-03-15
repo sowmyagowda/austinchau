@@ -8,7 +8,9 @@
 
   var calendarService = null;
 
-
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+  'Oct', 'Nov', 'Dec'];
+  
   function gdataInit() {
 
     calendarService = new google.gdata.calendar.CalendarService('TEST');    
@@ -131,11 +133,21 @@
             birthdayMonth = null;
             birthdayDate = null;
           }
-          
+         
           jQuery('#info').append('<img src="' + pic + '"><br>');
           jQuery('#info').append(name + '<br>');          
           jQuery('#info').append(birthdayMonth + '<br>');
           jQuery('#info').append(birthdayDate + '<br>');
+          
+          if (birthdayMonth && birthdayDate) {
+            var now = new Date();
+            var dateObject = new Date(now.getFullYear(),
+                MONTHS.indexOf(birthdayMonth), birthdayDate);            
+
+            $('#info').append(dateObject.toString());
+          }
+
+
         }
 
       });
