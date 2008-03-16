@@ -98,7 +98,7 @@
    
     var friendList = $('<select id=friendlist/>');
 
-    $('body').append(friendList);
+    $('#display').append(friendList);
 
     var fql = 'SELECT name,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
 
