@@ -96,7 +96,7 @@
 
   function getFQL() {
    
-    var friendList = jQuery('<select size=5 id=friendlist/>');
+    var friendList = jQuery('<select size=15 id=friendlist/>');
 
     jQuery('#display').append(friendList);
 
