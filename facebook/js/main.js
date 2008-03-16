@@ -108,8 +108,8 @@
         //var friend = result[i];
         //displayFriend(friend);
         
-        var friendName = friend.anme;
-        var friendUid = friend.uid;
+        var friendName = result.anme;
+        var friendUid = result.uid;
 
         var friendOption = jQuery('<option/>');
         friendOption.attr({value: friendUid});
