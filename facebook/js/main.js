@@ -134,7 +134,7 @@
 
         if (result.length > 0) {
 
-          var info jQuery('#info');
+          var info = jQuery('#info');
 
           info.empty();
           birthday = result[0].birthday;
