@@ -124,8 +124,6 @@
     friendList.click(function() {
 
       var uid = jQuery(this).get(0).options[jQuery(this).get(0).selectedIndex].value;
-      
-      console.log(uid);
 
       var fql = 'SELECT birthday,pic,pic_big FROM user WHERE uid=' + uid;      
       api.fql_query(fql, function(result, exception) {
