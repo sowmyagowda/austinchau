@@ -113,7 +113,7 @@
 
         var friendOption = $('<option/>');
         friendOption.attr({value: friendUid});
-        friendOption.html({friendName});
+        friendOption.html(friendName);
       }
 
     });
