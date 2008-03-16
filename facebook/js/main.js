@@ -96,7 +96,7 @@
 
   function getFQL() {
    
-    var friendList = jQuery('<select size=15 id=friendlist/>');
+    var friendList = jQuery('<select size=20 id=friendlist/>');
 
     jQuery('#display').append(friendList);
 
@@ -153,7 +153,7 @@
             birthday.match(re);
             birthdayMonth = RegExp.$1;
             birthdayDate = RegExp.$2;
-            info.append(birthdayMonth + '<br>');
+            info.append(birthdayMonth + '&nbsp;');
             info.append(birthdayDate + '<br>');
           } 
           
