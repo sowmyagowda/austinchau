@@ -81,7 +81,7 @@
       
       jQuery('#fql').click(function() {
         getFQL();
-      });
+      }).trigger('click');
 
       jQuery('#test').click(function() {
         test();
