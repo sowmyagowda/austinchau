@@ -96,7 +96,7 @@
 
   function getFQL() {
    
-    var friendList = jQuery('<select id=friendlist/>');
+    var friendList = jQuery('<select size=5 id=friendlist/>');
 
     jQuery('#display').append(friendList);
 
@@ -111,7 +111,10 @@
         var friendName = result[i].name;
         var friendUid = result[i].uid;
 
-        var friendOption = jQuery('<option value= ' + friendUid  +  '>' + friendName + '</option>');
+        //var friendOption = jQuery('<option value= ' + friendUid  +  '>' + friendName + '</option>');
+        var friendOption = jQuery('<option/>');
+        friendOption.val(friendUid);
+        friendOption.html(friendName);
         
         jQuery('#friendlist').append(friendOption);
       }
