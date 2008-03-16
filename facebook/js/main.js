@@ -176,68 +176,6 @@
     });
   }
 
-  function displayFriend(friend) {
-    var name = friend.name;
-    var uid = friend.uid;
-
-    var friendDiv = jQuery('<div></div>');
-    
-    friendDiv.append(name);
-
-    jQuery('#display').append(friendDiv);
-
-    friendDiv.click(function() {
-      var fql = 'SELECT birthday,pic,pic_big FROM user WHERE uid=' + uid;      
-      api.fql_query(fql, function(result, exception) {
-        var birthday = null;
-        var pic = null;
-        var birthdayMonth = null;
-        var birthdayDate = null;
-
-        if (result.length > 0) {
-
-          jQuery('#info').empty();
-          birthday = result[0].birthday;
-          pic = result[0].pic_big;
-          
-          var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
-          
-          if (birthday) {
-            birthday.match(re);
-            birthdayMonth = RegExp.$1;
-            birthdayDate = RegExp.$2;
-          } else {
-            birthdayMonth = null;
-            birthdayDate = null;
-          }
-         
-          jQuery('#info').append('<img src="' + pic + '"><br>');
-          jQuery('#info').append(name + '<br>');          
-          jQuery('#info').append(birthdayMonth + '<br>');
-          jQuery('#info').append(birthdayDate + '<br>');
-          
-          if (birthdayMonth && birthdayDate) {
-            
-            button = jQuery('<input type=button value=add>');
-
-            button.click(function() {
-              var now = new Date();
-              var dateObject = new Date(now.getFullYear(),
-                  MONTHS.indexOf(birthdayMonth), birthdayDate);            
-              createEvent(name + '\'s birthday', dateObject, pic);
-            });            
-
-            jQuery('#info').append('<br>');
-            jQuery('#info').append(button);
-          }
-
-
-        }
-
-      });
-    });
-  }
-
   function createEvent(title, d, pic) {
     
     var feedUri = 'http://www.google.com/calendar/feeds/default/private/full';
