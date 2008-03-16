@@ -125,8 +125,9 @@
 
       var uid = jQuery(this).get(0).options[jQuery(this).get(0).selectedIndex].value;
 
-      var fql = 'SELECT birthday,pic,pic_big FROM user WHERE uid=' + uid;      
+      var fql = 'SELECT name,birthday,pic,pic_big FROM user WHERE uid=' + uid;      
       api.fql_query(fql, function(result, exception) {
+        var name = null;
         var birthday = null;
         var pic = null;
         var birthdayMonth = null;
@@ -134,12 +135,13 @@
 
         if (result.length > 0) {
 
-          var info = jQuery('#info');
-
-          info.empty();
+          name = result[0].name;
           birthday = result[0].birthday;
           pic = result[0].pic_big;
           
+          var info = jQuery('#info');
+          info.empty();
+
           info.append(name + '<br>');          
           if (pic) {
             info.append('<img src="' + pic + '"><br>');
