@@ -95,14 +95,25 @@
   }
 
   function getFQL() {
-    
-    var fql = 'SELECT name,pic_small,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
+   
+    var friendList = $('<select id=friendlist/>');
+
+    $('body').append(friendList);
+
+    var fql = 'SELECT name,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
 
     api.fql_query(fql, function(result, exception) {
 
       for (var i=0; i<result.length; i++) {
-        var friend = result[i];
-        displayFriend(friend);
+        //var friend = result[i];
+        //displayFriend(friend);
+        
+        var friendName = friend.anme;
+        var friendUid = friend.uid;
+
+        var friendOption = $('<option/>');
+        friendOption.attr({value: friendUid});
+        friendOption.html({friendName});
       }
 
     });
