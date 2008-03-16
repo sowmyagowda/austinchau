@@ -118,7 +118,7 @@
         
         jQuery('#friendlist').append(friendOption);
             
-            jQuery('#friendlist').change(function() {
+            jQuery('#friendlist').click(function() {
 
               var uid = jQuery(this).get(0).options[jQuery(this).get(0).selectedIndex].value;
               
