@@ -96,9 +96,9 @@
 
   function getFQL() {
    
-    var friendList = $('<select id=friendlist/>');
+    var friendList = jQuery('<select id=friendlist/>');
 
-    $('#display').append(friendList);
+    jQuery('#display').append(friendList);
 
     var fql = 'SELECT name,uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=' + myId + ')';
 
@@ -111,7 +111,7 @@
         var friendName = friend.anme;
         var friendUid = friend.uid;
 
-        var friendOption = $('<option/>');
+        var friendOption = jQuery('<option/>');
         friendOption.attr({value: friendUid});
         friendOption.html(friendName);
       }
