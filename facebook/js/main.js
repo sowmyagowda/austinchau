@@ -112,7 +112,7 @@
         var friendUid = result.uid;
 
         var friendOption = jQuery('<option/>');
-        friendOption.attr({value: friendUid});
+        friendOption.val(friendUid);
         friendOption.html(friendName);
         
         jQuery('#friendlist').append(friendOption);
