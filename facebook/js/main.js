@@ -134,25 +134,26 @@
 
         if (result.length > 0) {
 
-          jQuery('#info').empty();
+          var info jQuery('#info');
+
+          info.empty();
           birthday = result[0].birthday;
           pic = result[0].pic_big;
           
+          info.append(name + '<br>');          
+          if (pic) {
+            info.append('<img src="' + pic + '"><br>');
+          }
+
           var re = /([a-zA-Z]+) ([0-9]{1,2})(, [0-9]{4})*/;
           
           if (birthday) {
             birthday.match(re);
             birthdayMonth = RegExp.$1;
             birthdayDate = RegExp.$2;
-          } else {
-            birthdayMonth = null;
-            birthdayDate = null;
-          }
-         
-          jQuery('#info').append('<img src="' + pic + '"><br>');
-          jQuery('#info').append(name + '<br>');          
-          jQuery('#info').append(birthdayMonth + '<br>');
-          jQuery('#info').append(birthdayDate + '<br>');
+            info.append(birthdayMonth + '<br>');
+            info.append(birthdayDate + '<br>');
+          } 
           
           if (birthdayMonth && birthdayDate) {
             
@@ -165,8 +166,8 @@
               createEvent(name + '\'s birthday', dateObject, pic);
             });            
 
-            jQuery('#info').append('<br>');
-            jQuery('#info').append(button);
+            info.append('<br>');
+            info.append(button);
           }
 
 
