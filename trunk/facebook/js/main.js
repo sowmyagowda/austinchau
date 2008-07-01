@@ -1,6 +1,6 @@
 (function() {
   
-  google.load('gdata', '1.x');
+  google.load('gdata', '1.2');
   google.setOnLoadCallback(gdataInit);
   
   var api = null;
