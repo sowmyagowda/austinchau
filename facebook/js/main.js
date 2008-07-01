@@ -19,15 +19,15 @@
     calendarService = new google.gdata.calendar.CalendarService('TEST');    
 
     if (hasToken()) {
-      jQuery('#gdatalogin').val('gcal logout');
+      jQuery('#gdatalogin').val('Google Calendar Login');
     } else {
-      jQuery('#gdatalogin').val('gcal login');
+      jQuery('#gdatalogin').val('Google Calendar Logout');
     }
 
     jQuery('#gdatalogin').click(function() {
       if (hasToken()) {
         google.accounts.user.logout();
-        jQuery('#gdatalogin').val('gcal login');
+        jQuery('#gdatalogin').val('Google Calendar Login');
       } else {
         google.accounts.user.login('http://www.google.com/calendar/feeds/');
       }
