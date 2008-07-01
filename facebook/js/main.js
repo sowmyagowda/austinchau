@@ -26,8 +26,8 @@
 
     jQuery('#gdatalogin').click(function() {
       if (hasToken()) {
-        google.accounts.user.logout();
         jQuery('#gdatalogin').val('Google Calendar Login');
+        google.accounts.user.logout();
       } else {
         google.accounts.user.login('http://www.google.com/calendar/feeds/');
       }
