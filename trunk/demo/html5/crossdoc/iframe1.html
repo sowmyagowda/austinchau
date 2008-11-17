@@ -13,7 +13,7 @@ body {
 <script type="text/javascript">
   window.onload = function() {
     
-    document.getElementById('title').innerHTML = document.location.host;
+    document.getElementById('title').innerHTML = 'Domain: ' + document.location.host;
 
     window.document.onmousemove = function(e) {
       var x = (window.Event) ? e.pageX : window.event.clientX;

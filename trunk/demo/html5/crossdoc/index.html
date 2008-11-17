@@ -8,8 +8,9 @@
 <script type="text/javascript">
 var url1 = 'http://achau.appspot.com/demo/html5/crossdoc/iframe1.html';
 var url2 = 'http://austinchau.googlecode.com/svn/trunk/demo/html5/crossdoc/iframe2.html';
-var iframeWidth = '300';
-var iframeHeight = '200';
+var iframeWidth = 300;
+var iframeHeight = 200;
+var frameborder = 1;
 
 window.onload = function() {
   
@@ -31,15 +32,17 @@ window.onload = function() {
 function buildIframes() {
   var iframe1 = document.createElement('iframe');
   iframe1.src = url1;
-  iframe1.style.width = iframeWidth;
-  iframe1.style.height = iframeHeight;
-  iframe1.style.border = 1;
+  iframe1.width = iframeWidth;
+  iframe1.height = iframeHeight;
+  iframe1.frameborder = frameborder;  
+  iframe1.style.border = 'solid black 1px;';
   
   var iframe2 = document.createElement('iframe');
   iframe2.src = url2;    
-  iframe2.style.width = iframeWidth;
-  iframe2.style.height = iframeHeight;
-  iframe2.style.border = 1;
+  iframe2.width = iframeWidth;
+  iframe2.height = iframeHeight;
+  iframe2.frameborder = frameborder;
+  iframe2.style.border = 'solid black 1px;';
   
   document.body.appendChild(iframe1);
   document.body.appendChild(iframe2);
@@ -57,6 +60,8 @@ body {
 This sample demonstrates two iframes of different domains passing their respective mouse coordinates to each other using <a href="http://www.whatwg.org/specs/web-apps/current-work/#crossDocumentMessages">HTML5 Cross-Document Messaging.</a>
 <br><br>
 [ <a href='http://code.google.com/p/austinchau/source/browse/#svn/trunk/demo/html5/crossdoc'>Source code</a> ]
+<br><br>
+* Move your mouse over the two iframes
 <br><br>
 </body>
 
